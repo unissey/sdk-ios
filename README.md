@@ -23,6 +23,8 @@ WIP
 
 There are two main use cases to our SDK described below. One where the video is captured and sent back to you for your own processing and the other where the video is directly sent to our API.
 
+> Note: If your app does not use a `NavigationView`, you must wrap the `DSWidgetView` in one for navigation between screens to work.
+
 ## 2.1 Video Capture Use Case
 
 If you do not wish to send the video to the analysis API right away, you can simply pass a method to the `onVideoCapture` callback to receive the video captured by the SDK. In this case, the `apiParameters` input is not necessary.
@@ -35,13 +37,17 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    DSWidgetView(
-      onVideoCapture: { capture in
-        // Do something with the captured video
-        // Note: Do not forget to send `capture.metadata` to our
-        // api along with `capture.video`
+    NavigationView {
+      VStack {
+        DSWidgetView(
+          onVideoCapture: { capture in
+            // Do something with the captured video
+            // Note: Do not forget to send `capture.metadata` to our
+            // api along with `capture.video`
+          }
+        )
       }
-    )
+    }
   }
 }
 ```
@@ -56,16 +62,20 @@ import SwiftUI
 
 struct ContentView: View {
   var body: some View {
-    DSWidgetView(
-      apiSettings: ApiSettings(
-        key: "YOUR_API_KEY",
-        baseURL: "https://test.api-analyze.thedeepsense.co/api/v2",
-        gdprConsent: true
-      ),
-      onApiResponse: { response in
-        // Do something with the results
+    NavigationView {
+      VStack {
+        DSWidgetView(
+          apiSettings: ApiSettings(
+            key: "YOUR_API_KEY",
+            baseURL: "https://test.api-analyze.thedeepsense.co/api/v2",
+            gdprConsent: true
+          ),
+          onApiResponse: { response in
+            // Do something with the results
+          }
+        )
       }
-    )
+    }
   }
 }
 ```
