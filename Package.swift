@@ -17,7 +17,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Deepsense",
-            url: "https://github.com/thedeepsense/sdk-ios/releases/download/v0.3.4/Deepsense-v0.3.4.xcframework.zip",
+            url: "https://www.dropbox.com/s/ty19r57lno97k36/Deepsense-v0.3.4.xcframework.zip?dl=1",
             checksum: "3143303c201394889ba5f756d5dce24b825989d414c1c512f341072e629b0891"
         )
     ]
