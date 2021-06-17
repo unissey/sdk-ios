@@ -17,8 +17,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Deepsense",
-            url: "https://www.dropbox.com/s/wespp1xepvf4qan/Deepsense-v0.3.4.xcframework.zip?dl=1",
-            checksum: "a18ccdf39256be799a74eb3fb191c1e1b1c9825309b46e50dd9d7c65e7b5a8fc"
+            url: "https://www.dropbox.com/s/eqlrf9ljo54yhjh/Deepsense-v0.3.4.xcframework.zip?dl=1",
+            checksum: "5e703c416ec0874a174d269ffca84fef3a77b5e807b69da6b89af5db9a2dfc0c"
         )
     ]
 )
