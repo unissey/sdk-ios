@@ -10,12 +10,25 @@ _<p align="center">Deepsense Confidential</p>_
 1. [Installation](#1-installation)
 2. [Getting Started](#2-getting-started)
 3. [Reference](#3-reference)
-4. [Configuration Options](#4-configuration-options)
-5. [About](#5-about)
+4. [About](#4-about)
 
 # 1. Installation
 
-WIP
+## Get a personnal access token
+
+First generate an access token by following [this link](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). Make sure to include at least the `repo` && `read:packages` permission to the access token.
+
+Then, to get access permissions, you will need to contact someone from the Deepsense organisation with your github account name.
+
+## Authenticate on Xcode
+
+> You can skip this step if you have already added your GitHub account to XCode.
+
+Open XCode, go to preferences (`CMD + ,`), go to the second tab (accounts), add a new account (bottom left, the little `+`), select "GitHub" then add your GitHub account's email and the personnal access token you previously generated.
+
+## Download the framework
+
+You can download our framework using the Swift Package Manager. To do so, in Xcode, go to File -> Swift Packages -> Add Package Depency. Then add the following URL in the search bar and press enter: `https://github.com/thedeepsense/sdk-ios`. Xcode will prompt you for a version, you can keep the default values and click next and then finish.
 
 # 2. Getting Started
 
@@ -133,12 +146,7 @@ public struct WidgetResponse {
 }
 ```
 
-# 4. Configuration Options
-
-WIP 
-<br />
-
-# 5. About
+# 4. About
 
 ## Versions
 
