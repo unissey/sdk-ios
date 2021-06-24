@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Deepsense",
+        "repositoryURL": "https://github.com/thedeepsense/sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "0153d2fbdbfc7d95168be5109f75444c035ef042",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

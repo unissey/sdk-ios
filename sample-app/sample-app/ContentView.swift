@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import Deepsense
 
 struct ContentView: View {
+    @State var video: Data?
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                DSWidgetView(onVideoCapture: { capture in
+//                    self.video = capture
+                })
+            }
+        }
     }
 }
 
