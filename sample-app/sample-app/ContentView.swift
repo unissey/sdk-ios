@@ -5,9 +5,9 @@
 //  Created by Felix Maury on 24/06/2021.
 //
 
+import AVKit
 import Deepsense
 import SwiftUI
-import AVKit
 
 struct ContentView: View {
     @State var videoUrl: URL?
@@ -19,19 +19,29 @@ struct ContentView: View {
                     Spacer()
                     VideoPlayer(player: AVPlayer(url: videoUrl))
                         .frame(height: 400)
+                        .navigationBarTitle("Captured Video")
                     Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: { self.videoUrl = nil }) {
+                            Text("RESET")
+                                .foregroundColor(.red)
+                                .font(.title)
+                        }
+                        .padding(.bottom)
+                        Spacer()
+                    }
                 } else {
                     DSWidgetView(onVideoCapture: { capture in
                         guard var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-                        url.appendPathComponent("video.mpeg") // or whatever extension the video is
-                        if ((try? capture.video.write(to: url)) != nil) {
+                        url.appendPathComponent("video.mov") // or whatever extension the video is
+                        if (try? capture.video.write(to: url)) != nil {
                             self.videoUrl = url
                         }
                     })
                 }
             }
         }
-        .navigationBarHidden(true)
     }
 }
 
