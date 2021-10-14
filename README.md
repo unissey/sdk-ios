@@ -1,11 +1,11 @@
-_<p align="center">Deepsense Confidential</p>_
-![logo](https://user-images.githubusercontent.com/14275989/73751192-e1433f00-475e-11ea-853d-50952fb27862.png)
+_<p align="center">Unissey Confidential</p>_
+![logo](https://user-images.githubusercontent.com/2079561/134871554-4682d336-60a0-48d1-9dd3-6e8330e6e013.png)
 
-# Deepsense iOS SDK
+# Unissey iOS SDK
 
-> Deepsense's iOS Library
+> Unissey's iOS Library
 
-`sdk-ios` is the iOS library that replicates Deepsense's core javascript SDK to be used in Swift applications. The library can handle all data capture necessary to run Deepsense's biometric algorithms and returns the result to the parent application.
+`sdk-ios` is the iOS library that replicates Unissey's core javascript SDK to be used in Swift applications. The library can handle all data capture necessary to run Unissey's biometric algorithms and returns the result to the parent application.
 
 1. [Installation](#1-installation)
 2. [Getting Started](#2-getting-started)
@@ -18,7 +18,7 @@ _<p align="center">Deepsense Confidential</p>_
 
 First generate an access token by following [this link](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). Make sure to include at least the `repo` && `read:packages` permission to the access token.
 
-Then, to get access permissions, you will need to contact someone from the Deepsense organisation with your github account name.
+Then, to get access permissions, you will need to contact someone from the Unissey organisation with your github account name.
 
 ## Authenticate on Xcode
 
@@ -28,7 +28,7 @@ Open XCode, go to preferences (`CMD + ,`), go to the second tab (accounts), add 
 
 ## Download the framework
 
-You can download our framework using the Swift Package Manager. To do so, in Xcode, go to File -> Swift Packages -> Add Package Depency. Then add the following URL in the search bar and press enter: `https://github.com/thedeepsense/sdk-ios`. Xcode will prompt you for a version, you can keep the default values and click next and then finish.
+You can download our framework using the Swift Package Manager. To do so, in Xcode, go to File -> Swift Packages -> Add Package Depency. Then add the following URL in the search bar and press enter: `https://github.com/unissey/sdk-ios`. Xcode will prompt you for a version, you can keep the default values and click next and then finish.
 
 # 2. Getting Started
 
@@ -80,7 +80,7 @@ struct ContentView: View {
         DSWidgetView(
           apiSettings: ApiSettings(
             key: "YOUR_API_KEY",
-            baseURL: "https://test.api-analyze.thedeepsense.co/api/v2",
+            baseURL: "https://staging.api-analyze.unissey.com/api/v2",
             gdprConsent: true
           ),
           onApiResponse: { response in
@@ -109,9 +109,9 @@ These are the inputs and outputs of the ds-widget component
 
 ```swift
 public struct ApiParameters {
-  let key: String // Your deepsense API Key
-  let baseURL: String // The base URL of the API (eg. https://test.api-analyze.thedeepsense.co/api/v2)
-  let gdprConsent: Bool // Indicates whether proper consent was given for Deepsense to store the uploaded medias.
+  let key: String // Your Unissey API Key
+  let baseURL: String // The base URL of the API (eg. https://test.api-analyze.unissey.com/api/v2)
+  let gdprConsent: Bool // Indicates whether proper consent was given for Unissey to store the uploaded medias.
   let referenceImage: Data? // Image to be uploaded to the API for face comparison. Can be left to `nil` to not do face comparison or use the image captured by the SDK if `captureReferenceImage == true`
 };
 
@@ -158,8 +158,8 @@ public struct WidgetResponse {
 
 ## Support
 
-`tech@thedeepsense.co`
+`tech@unissey.com`
 
 ## License / Copyright
 
-This SDK is distributed under Deepsense license agreement
+This SDK is distributed under Unissey's license agreement
