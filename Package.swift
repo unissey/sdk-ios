@@ -3,22 +3,22 @@ import PackageDescription
 
 
 let package = Package(
-    name: "Deepsense",
+    name: "unissey-sdk",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "Deepsense",
-            targets: ["Deepsense"])
+            name: "unissey-sdk",
+            targets: ["unissey-sdk"])
     ],
     dependencies: [
     ],
     targets: [
         .binaryTarget(
-            name: "Deepsense",
-            url: "https://storage.googleapis.com/deepsense-shared/sdk-ios/Deepsense-v1.0.2.xcframework.zip",
-            checksum: "34d9d4d059a646fa2ed7b882b360b7123858aa1e7135b705d725a949554eeec4"
+            name: "unissey-sdk",
+            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/Unissey-v1.2.0.xcframework.zip",
+            checksum: "208f18bfb9b96a5e6b35240283c7e7879462aa7fb6f097554dde7eb4a0bb5a81"
         )
     ]
 )
