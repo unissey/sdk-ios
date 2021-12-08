@@ -3,22 +3,22 @@ import PackageDescription
 
 
 let package = Package(
-    name: "unissey-sdk",
+    name: "UnisseySampleApp",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "unissey-sdk",
-            targets: ["unissey-sdk"])
+            name: "UnisseySDK",
+            targets: ["UnisseySDK"])
     ],
     dependencies: [
     ],
     targets: [
         .binaryTarget(
-            name: "unissey-sdk",
-            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/Unissey-v1.2.0.xcframework.zip",
-            checksum: "208f18bfb9b96a5e6b35240283c7e7879462aa7fb6f097554dde7eb4a0bb5a81"
-        )
+            name: "UnisseySDK",
+            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v1.2.3.xcframework.zip",
+            checksum: "62c0c64d0f10898a4888e94e810aa777417589419c42bc790e015752e119bc26"
+        ),
     ]
 )
