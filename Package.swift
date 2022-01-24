@@ -3,7 +3,7 @@ import PackageDescription
 
 
 let package = Package(
-    name: "UnisseySampleApp",
+    name: "UnisseySDK",
     platforms: [
         .iOS(.v13)
     ],
@@ -17,8 +17,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "UnisseySDK",
-            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v1.2.3.xcframework.zip",
-            checksum: "62c0c64d0f10898a4888e94e810aa777417589419c42bc790e015752e119bc26"
+            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v1.2.6.xcframework.zip",
+            checksum: "1282990071b3fe0d65b7f6d3e32ec12ba50cbd1b1bf0bd606c5ec15a19aeafc7"
         ),
     ]
 )
