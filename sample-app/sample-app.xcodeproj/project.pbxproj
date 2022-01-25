@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09ECF3DB279FE59700688B2D /* UnisseySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 09ECF3DA279FE59700688B2D /* UnisseySDK */; };
 		DCE4AAEF2684922A00FCF18E /* sample_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE4AAEE2684922A00FCF18E /* sample_appApp.swift */; };
 		DCE4AAF12684922A00FCF18E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE4AAF02684922A00FCF18E /* ContentView.swift */; };
 		DCE4AAF32684922B00FCF18E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE4AAF22684922B00FCF18E /* Assets.xcassets */; };
 		DCE4AAF62684922B00FCF18E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE4AAF52684922B00FCF18E /* Preview Assets.xcassets */; };
-		DCE4AAFF2684C83F00FCF18E /* Deepsense in Frameworks */ = {isa = PBXBuildFile; productRef = DCE4AAFE2684C83F00FCF18E /* Deepsense */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,18 +28,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCE4AAFF2684C83F00FCF18E /* Deepsense in Frameworks */,
+				09ECF3DB279FE59700688B2D /* UnisseySDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09ECF3CF279EF43500688B2D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		09ECF3D3279F0C5D00688B2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DCE4AAE22684922A00FCF18E = {
 			isa = PBXGroup;
 			children = (
+				09ECF3CF279EF43500688B2D /* Packages */,
 				DCE4AAED2684922A00FCF18E /* sample-app */,
 				DCE4AAEC2684922A00FCF18E /* Products */,
+				09ECF3D3279F0C5D00688B2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,7 +104,7 @@
 			);
 			name = "sample-app";
 			packageProductDependencies = (
-				DCE4AAFE2684C83F00FCF18E /* Deepsense */,
+				09ECF3DA279FE59700688B2D /* UnisseySDK */,
 			);
 			productName = "sample-app";
 			productReference = DCE4AAEB2684922A00FCF18E /* sample-app.app */;
@@ -118,7 +134,7 @@
 			);
 			mainGroup = DCE4AAE22684922A00FCF18E;
 			packageReferences = (
-				DCE4AAFD2684C83F00FCF18E /* XCRemoteSwiftPackageReference "sdk-ios" */,
+				09ECF3D9279FE59700688B2D /* XCRemoteSwiftPackageReference "sdk-ios" */,
 			);
 			productRefGroup = DCE4AAEC2684922A00FCF18E /* Products */;
 			projectDirPath = "";
@@ -338,9 +354,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DCE4AAFD2684C83F00FCF18E /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
+		09ECF3D9279FE59700688B2D /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/thedeepsense/sdk-ios";
+			repositoryURL = "https://github.com/unissey/sdk-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.4.0;
@@ -349,10 +365,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DCE4AAFE2684C83F00FCF18E /* Deepsense */ = {
+		09ECF3DA279FE59700688B2D /* UnisseySDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DCE4AAFD2684C83F00FCF18E /* XCRemoteSwiftPackageReference "sdk-ios" */;
-			productName = Deepsense;
+			package = 09ECF3D9279FE59700688B2D /* XCRemoteSwiftPackageReference "sdk-ios" */;
+			productName = UnisseySDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

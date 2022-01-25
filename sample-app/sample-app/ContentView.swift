@@ -6,7 +6,7 @@
 //
 
 import AVKit
-import Deepsense
+import UnisseySDK
 import SwiftUI
 
 struct ContentView: View {
