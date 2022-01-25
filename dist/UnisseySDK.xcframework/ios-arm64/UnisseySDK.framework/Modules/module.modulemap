@@ -1,0 +1,4 @@
+framework module UnisseySDK {
+  header "UnisseySDK-Swift.h"
+  requires objc
+}

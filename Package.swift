@@ -15,10 +15,16 @@ let package = Package(
     dependencies: [
     ],
     targets: [
-        .binaryTarget(
-            name: "UnisseySDK",
-            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v1.2.6.xcframework.zip",
-            checksum: "1282990071b3fe0d65b7f6d3e32ec12ba50cbd1b1bf0bd606c5ec15a19aeafc7"
-        ),
+//  This doesn't work : we get an error : 'downloaded archive of binary target does not contain expected binary artifact'
+//        .binaryTarget(
+//            name: "UnisseySDK",
+//            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v1.2.xcframework.zip",
+//            checksum: "f1dc30cbb1be75cddf5596a6ab43447f8810197c716495d283ae1afd3928d18b"
+//        ),
+        
+            .binaryTarget(
+                name: "UnisseySDK",
+                path: "./dist/UnisseySDK.xcframework"
+            ),
     ]
 )

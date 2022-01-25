@@ -1,0 +1,97 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UnisseySDK
+import AVFoundation
+import Combine
+import CoreImage
+import Foundation
+import Swift
+import SwiftUI
+import UIKit
+import Vision
+import _Concurrency
+import _System_Foundation
+public let SDK_IOS_BUNDLE: Foundation.Bundle?
+public struct ApiParameters {
+  public let key: Swift.String
+  public let baseURL: Swift.String
+  public let gdprConsent: Swift.Bool
+  public let referenceImage: Foundation.Data?
+  public init(key: Swift.String, baseURL: Swift.String, gdprConsent: Swift.Bool = false, referenceImage: Foundation.Data? = nil)
+}
+public struct CaptureData {
+  public let video: Foundation.Data
+  public let metadata: UnisseySDK.CaptureMetadata
+}
+public typealias VideoCaptureCB = (UnisseySDK.CaptureData) -> Swift.Void
+public typealias APIResponseCB = (UnisseySDK.WidgetResponse) -> Swift.Void
+public typealias CaptureMetadata = [Swift.String : Swift.String]
+public struct WidgetResponse {
+  public let status: Swift.String
+  public let parentSessionId: Swift.String?
+  public let finalResults: UnisseySDK.WidgetResponse.Results?
+  public let errorMessage: Swift.String?
+  public let warning: Swift.String?
+  public struct Results : Swift.Codable {
+    public let liveness: UnisseySDK.WidgetResponse.Results.Liveness
+    public let faceMatching: UnisseySDK.WidgetResponse.Results.FaceMatch?
+    public let sessionId: Swift.String
+    public let bundleId: Swift.String?
+    public let retriesRemaining: Swift.Int
+    public struct Liveness : Swift.Codable {
+      public let isGenuine: Swift.Bool
+      public let probability: Swift.Float
+      public let confidence: UnisseySDK.Confidence
+      public let vqcHints: [UnisseySDK.VqcHint]?
+      public func encode(to encoder: Swift.Encoder) throws
+      public init(from decoder: Swift.Decoder) throws
+    }
+    public struct FaceMatch : Swift.Codable {
+      public let match: Swift.Bool
+      public let score: Swift.Float
+      public let vqcHints: [UnisseySDK.VqcHint]?
+      public let confidence: UnisseySDK.Confidence
+      public func encode(to encoder: Swift.Encoder) throws
+      public init(from decoder: Swift.Decoder) throws
+    }
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+public struct Confidence : Swift.Codable {
+  public let level: UnisseySDK.ConfidenceLevel
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum ConfidenceLevel : Swift.Int, Swift.Codable {
+  case LowConfidence
+  case HighConfidence
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum VqcHint : Swift.Int32, Swift.Codable {
+  case Mask
+  case Darkness
+  case Brightness
+  public init?(rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+  public var rawValue: Swift.Int32 {
+    get
+  }
+}
+@_Concurrency.MainActor(unsafe) public struct DSWidgetView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(onVideoCapture: UnisseySDK.VideoCaptureCB? = nil, apiParameters: UnisseySDK.ApiParameters? = nil, onApiResponse: UnisseySDK.APIResponseCB? = nil, themeColor: SwiftUI.Color = Color("UniBlue", bundle: SDK_IOS_BUNDLE), showExplanations: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s10UnisseySDK12DSWidgetViewV4bodyQrvp", 0) __
+}
+extension UnisseySDK.ConfidenceLevel : Swift.Equatable {}
+extension UnisseySDK.ConfidenceLevel : Swift.Hashable {}
+extension UnisseySDK.ConfidenceLevel : Swift.RawRepresentable {}
+extension UnisseySDK.VqcHint : Swift.Equatable {}
+extension UnisseySDK.VqcHint : Swift.Hashable {}
+extension UnisseySDK.VqcHint : Swift.RawRepresentable {}
