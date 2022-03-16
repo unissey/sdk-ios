@@ -5,7 +5,7 @@ _<p align="center">Unissey Confidential</p>_
 
 > Unissey's iOS Library
 
-`sdk-ios` is the iOS library that replicates Unissey's core javascript SDK to be used in Swift applications. The library can handle all data capture necessary to run Unissey's biometric algorithms and returns the result to the parent application.
+`UnisseySDK` is the iOS library that replicates Unissey's core javascript SDK to be used in Swift applications. The library can handle all data capture necessary to run Unissey's biometric algorithms and returns the result to the parent application.
 
 1. [Installation](#1-installation)
 2. [Getting Started](#2-getting-started)
@@ -45,7 +45,7 @@ If you do not wish to send the video to the analysis API right away, you can sim
 > Note: Passing in valid api parameters as input will result in an API call, regardless of whether or not you define the `onVideoCapture` callback. And vice-versa, the `onVideoCapture` callback will be triggered even if the API is called.
 
 ```swift
-import Deepsense
+import UnisseySDK
 import SwiftUI
 
 struct ContentView: View {
@@ -70,7 +70,7 @@ struct ContentView: View {
 The SDK can make the call to our video analysis API automatically after capturing the video if you specify the appropriate parameters. If you need to capture an image for face comparison on top of the standard video liveness detection, you can pass `true` to the `captureReferenceImage` input.
 
 ```swift
-import Deepsense
+import UnisseySDK
 import SwiftUI
 
 struct ContentView: View {
@@ -80,7 +80,7 @@ struct ContentView: View {
         DSWidgetView(
           apiSettings: ApiSettings(
             key: "YOUR_API_KEY",
-            baseURL: "https://staging.api-analyze.unissey.com/api/v2",
+            baseURL: "https://api-analyze.unissey.com/api/v2",
             gdprConsent: true
           ),
           onApiResponse: { response in
@@ -120,6 +120,20 @@ public struct CaptureData {
     let metadata: CaptureMetadata // A [String: String] object that needs to be JSON stringified and sent to the API. This is done automatically by the SDK if `apiParameters` are set.
 }
 
+public enum VqcHint: Int32, Codable {
+    case Mask = 100
+    case Light = 200
+}
+
+public struct Confidence: Codable {
+    public let level: ConfidenceLevel
+}
+
+public enum ConfidenceLevel: Int, Codable {
+    case LowConfidence = 0
+    case HighConfidence = 1
+}
+
 public struct WidgetResponse {
   public let status: String
   public let parentSessionId: String?
@@ -131,16 +145,21 @@ public struct WidgetResponse {
     public let liveness: Liveness
     public let faceMatching: FaceMatch?
     public let sessionId: String
+    public let bundleId: String?
     public let retriesRemaining: Int
 
     public struct Liveness: Codable {
       public let isGenuine: Bool
       public let probability: Float
+      public let confidence: Confidence
+      public let vqcHints: [VqcHint]?
     }
 
     public struct FaceMatch: Codable {
       public let match: Bool
       public let score: Float
+      public let vqcHints: [VqcHint]?
+      public let confidence: Confidence
     }
   }
 }
