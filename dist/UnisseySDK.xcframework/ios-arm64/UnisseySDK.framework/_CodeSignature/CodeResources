@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		HTtk077dLwyKbi5IrPaBhDoWwYE=
+		yoZ5sr77tozQWtGOwv/qkMuPE3Y=
 		</data>
 		<key>Headers/UnisseySDK-Swift.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		tL7oCbEX3eqdp3u3W/hgqx1DCOE=
+		NvOzRZ29aS+3tfo5dzOB89NhO0o=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		wF1RMcHpmQRnkCB7zYPVkcEgxjU=
+		Rvs0PORGvy9z44CD30l+aeB+73Y=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		c45fTYV9q/bXzaybF3p7ZU1Jqx0=
+		8xm7rmM5OI9zlW5eftOzOouFjVg=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		wF1RMcHpmQRnkCB7zYPVkcEgxjU=
+		Rvs0PORGvy9z44CD30l+aeB+73Y=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		c45fTYV9q/bXzaybF3p7ZU1Jqx0=
+		8xm7rmM5OI9zlW5eftOzOouFjVg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -48,7 +48,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YZQVTt0oLnLyNo5kJYBaB7ZOEq0=
+			JBfBhbRQ68VqIBOP+JuWRLW9c4c=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -57,7 +57,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			P4IzhThc3sYH7Ji2mgGOMz1uuI0=
+			Dhm5tjAd9RQoZ1nQIOZmZ1zzMuY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -69,7 +69,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7s55sP6OFLhyizoBu0pfwqNL0LnvmNWQvnmkBXKnyr8=
+			JEwYOrkb+pHnc2XYYv+Ky6xdRN13La2aUBgzo/rt/Ac=
 			</data>
 		</dict>
 		<key>Headers/UnisseySDK-Swift.h</key>
@@ -90,14 +90,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			l3lSjDcUKtFqXtuDtF55qKCMssRn2wi4khbFn5WTq44=
+			30lIYjZVsBW1LwB2L87Gr8Ua4oWSWLzWtSsDTrxjxXc=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			m7WlpBtekenDUScaOMculxWaX01IIbU3vYnXSocNn0U=
+			7YvODf2dyBjB9G/F5pRqtiHEpC4ZjvhakJ+l/2X/yxA=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftdoc</key>
@@ -111,14 +111,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			l3lSjDcUKtFqXtuDtF55qKCMssRn2wi4khbFn5WTq44=
+			30lIYjZVsBW1LwB2L87Gr8Ua4oWSWLzWtSsDTrxjxXc=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			m7WlpBtekenDUScaOMculxWaX01IIbU3vYnXSocNn0U=
+			7YvODf2dyBjB9G/F5pRqtiHEpC4ZjvhakJ+l/2X/yxA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -132,7 +132,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			P3MLLXQnpfdnvCcqrFl0CKbBJTKMEj4n11GZbcqNKtA=
+			oQT3GeS0S/DOup24JSZjrT8nzj4CVZ8E0VarcGp+aiQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -141,7 +141,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			O2rV+sC+qZuSy9YunCSfaW4TCVkls35sa6ttDKuvA9I=
+			n07gx5zxJtR7PpH5IbsBy+jn8hRpIG/lOPqCFtPEilA=
 			</data>
 			<key>optional</key>
 			<true/>
