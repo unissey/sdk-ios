@@ -67,6 +67,8 @@ struct ContentView: View {
 
 ## 2.2 Api Call Use Case
 
+⚠️This use case is not recommended in production, for security reasons, and should be limited to POC / demo settings only. In production, API calls should be made from your backend only.
+
 The SDK can make the call to our video analysis API automatically after capturing the video if you specify the appropriate parameters. If you need to capture an image for face comparison on top of the standard video liveness detection, you can pass `true` to the `captureReferenceImage` input.
 
 ```swift
