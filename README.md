@@ -164,18 +164,9 @@ public typealias APIResponseCB = (UnisseyAnalyzeResponse) -> Void
 
 public struct UnisseyAnalyzeResponse {
     public let status: String
-    public let parentSessionId: String?
     public let finalResults: Results?
     public let errorMessage: String?
     public let warning: String?
-
-    public init(status: String, parentSessionId: String?, finalResults: Results?, errorMessage: String?, warning: String?) {
-        self.status = status
-        self.parentSessionId = parentSessionId
-        self.finalResults = finalResults
-        self.errorMessage = errorMessage
-        self.warning = warning
-    }
 
     public struct Results: Codable {
         public let sessionId: String
