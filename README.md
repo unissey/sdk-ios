@@ -159,51 +159,75 @@ public typealias CaptureMetadata = [String: String]
 ```
 
 ```swift
-public typealias APIResponseCB = (ApiResponse) -> Void
+public typealias APIResponseCB = (UnisseyAnalyzeResponse) -> Void
 
 
-public struct APIesponse {
-  public let status: String
-  public let parentSessionId: String?
-  public let finalResults: Results?
-  public let errorMessage: String?
-  public let warning: String?
+public struct UnisseyAnalyzeResponse {
+    public let status: String
+    public let parentSessionId: String?
+    public let finalResults: Results?
+    public let errorMessage: String?
+    public let warning: String?
 
-  public struct Results: Codable {
-    public let liveness: Liveness
-    public let faceMatching: FaceMatch?
-    public let sessionId: String
-    public let bundleId: String?
-    public let retriesRemaining: Int
-
-    public struct Liveness: Codable {
-      public let isGenuine: Bool
-      public let probability: Float
-      public let confidence: Confidence
-      public let vqcHints: [VqcHint]?
+    public init(status: String, parentSessionId: String?, finalResults: Results?, errorMessage: String?, warning: String?) {
+        self.status = status
+        self.parentSessionId = parentSessionId
+        self.finalResults = finalResults
+        self.errorMessage = errorMessage
+        self.warning = warning
     }
 
-    public struct FaceMatch: Codable {
-      public let match: Bool
-      public let score: Float
-      public let vqcHints: [VqcHint]?
-      public let confidence: Confidence
+    public struct Results: Codable {
+        public let sessionId: String
+        public let sessionGroupId: String?
+        public let retriesRemaining: Int
+        public let isGenuine: Bool?
+        public let isMatch: Bool?
+        public let details: Details
+        // Not yet implemented :  public let logs: [Log]
+        
+        public struct Details: Codable {
+            public let mediaValidation: MediaValidation?
+            // Not yet implemented : public let faceDetection: FaceDetection?
+            public let liveness: Liveness?
+            public let faceComparison: FaceComparison?
+            // unused by now : public let injection: Injection?
+            public let hintsForRetry: HintsForRetry?
+            
+            
+            public struct Liveness: Codable {
+                public let result: String       // "genuine", "suspected_spoof", "not_reached"
+                public let confidenceLevel:ConfidenceLevel?
+            }
+
+            public struct FaceComparison: Codable {
+                public let result: String       // "match", "suspected_mismatch", "not_reached"
+                public let confidenceLevel:ConfidenceLevel?
+            }
+            
+            public enum ConfidenceLevel: String, Codable {
+                case LowConfidence = "low"
+                case HighConfidence = "high"
+            }
+            
+            public struct MediaValidation: Codable {
+                public let selfie: String       // "valid", "unreadable", "insufficient_frame_count"
+                public let reference:String?    // "valid", "unreadable", "insufficient_frame_count"
+            }
+        }
+        public struct HintsForRetry: Codable {
+            public let selfie: HintsList
+        }
+        
+        public struct HintsList: Codable {
+            public let hints:[VqcHint]
+        }
+        
+        public enum VqcHint: Int32, Codable {
+            case Mask = 100
+            case Light = 200
+        }
     }
-  }
-}
-
-public enum VqcHint: Int32, Codable {
-    case Mask = 100
-    case Light = 200
-}
-
-public struct Confidence: Codable {
-    public let level: ConfidenceLevel
-}
-
-public enum ConfidenceLevel: Int, Codable {
-    case LowConfidence = 0
-    case HighConfidence = 1
 }
 ```
 
