@@ -6,15 +6,15 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		yoZ5sr77tozQWtGOwv/qkMuPE3Y=
+		DxDs7D/FWPz60ojjwSmnohF18nw=
 		</data>
 		<key>Headers/UnisseySDK-Swift.h</key>
 		<data>
-		F4Tq88volae7x6jVViRP4IChldI=
+		hhLFik5fctDXg+ucIAy3TzO+QOQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+h7rxx8CRI83rXby2WkFwRd4PEw=
+		3hJ37jdPXPJ3/VD2uGaRs7x9huI=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		NjYg0vBnGFft2AazBM84aE4oU0A=
+		yHfMFZ0eDUDwLQVPP66qt6PJJC0=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		GahcvMhyVns374hQQhsyqvuqlQ8=
+		9vAVtsMiJo0iM4mFQ5mxohdHztQ=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		NjYg0vBnGFft2AazBM84aE4oU0A=
+		yHfMFZ0eDUDwLQVPP66qt6PJJC0=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		GahcvMhyVns374hQQhsyqvuqlQ8=
+		9vAVtsMiJo0iM4mFQ5mxohdHztQ=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		yUnuYjE02nVbjjqw8ndfecpUDM8=
+		59xae65NqUtfNFqS+UOzoB/9vME=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xejAKnAW/USzsOawsyjXMdaZoK8=
+		Yen7iRn34bw1dsmpt6wG6ed6kVs=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -58,11 +58,11 @@
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		yUnuYjE02nVbjjqw8ndfecpUDM8=
+		59xae65NqUtfNFqS+UOzoB/9vME=
 		</data>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		xejAKnAW/USzsOawsyjXMdaZoK8=
+		Yen7iRn34bw1dsmpt6wG6ed6kVs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -72,7 +72,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			JBfBhbRQ68VqIBOP+JuWRLW9c4c=
+			A4Ml8HqpVepjPXYQ7RuY4PXLBJ8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -81,7 +81,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Dhm5tjAd9RQoZ1nQIOZmZ1zzMuY=
+			qAgeISvYJEs10ybMoj+ju1OP7Xk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JEwYOrkb+pHnc2XYYv+Ky6xdRN13La2aUBgzo/rt/Ac=
+			LPDDcs2vU+G2U2GgaNjozFc0q89s4kdEq0qMXieT168=
 			</data>
 		</dict>
 		<key>Headers/UnisseySDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			apF7K4PM1g86WVw3rl60+/l9edYnaGeuyep7ACa2hwg=
+			Q5l0e3q34YscNMNo9+NJKFvK0n8BU6qgfe/p8B42w2U=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -114,14 +114,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9Q4IP+lFW5ORn0VTLYsKld4G6Q9bf/+LWlAZXI76MKg=
+			MbzWCY6wAnZfK05dYfJYULbDGpQ2ZnU9fc1w0BIsxfc=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G+E4j9WMUa0mPvUE93A4JP5XBvn+Vgirp44211Q1RXE=
+			I94Xk9LklJ7qfanx6aGzddmNTTfHvxY8k4nYdrcM+U8=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftdoc</key>
@@ -135,14 +135,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9Q4IP+lFW5ORn0VTLYsKld4G6Q9bf/+LWlAZXI76MKg=
+			MbzWCY6wAnZfK05dYfJYULbDGpQ2ZnU9fc1w0BIsxfc=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G+E4j9WMUa0mPvUE93A4JP5XBvn+Vgirp44211Q1RXE=
+			I94Xk9LklJ7qfanx6aGzddmNTTfHvxY8k4nYdrcM+U8=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -156,14 +156,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8BT4EptwrG6CAtAh/AvCTAFRSSsD7L+AfoRIhp0629M=
+			NYm7XzX5+jfm1LzxG1uCiVoEXr2askCcNvycpIbyYk8=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3bEQqCYj6d5OrkwpSBOej2nOHDWig1qSPB+EA61tlhQ=
+			kBoHkbYKeP2CXAya+GeZszeU9dUuk2Hvf4ViRSOfOIo=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64.swiftdoc</key>
@@ -177,14 +177,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8BT4EptwrG6CAtAh/AvCTAFRSSsD7L+AfoRIhp0629M=
+			NYm7XzX5+jfm1LzxG1uCiVoEXr2askCcNvycpIbyYk8=
 			</data>
 		</dict>
 		<key>Modules/UnisseySDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3bEQqCYj6d5OrkwpSBOej2nOHDWig1qSPB+EA61tlhQ=
+			kBoHkbYKeP2CXAya+GeZszeU9dUuk2Hvf4ViRSOfOIo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -198,7 +198,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oQT3GeS0S/DOup24JSZjrT8nzj4CVZ8E0VarcGp+aiQ=
+			4uAYQqxbiCYk6U2CYiutoMntDh6Jhys2h+qVtTtR0pA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -207,7 +207,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			n07gx5zxJtR7PpH5IbsBy+jn8hRpIG/lOPqCFtPEilA=
+			DPB8dEJ6fQSQWZ1AMAEXAYmFms8U0kgpHjMt4M7QhQ8=
 			</data>
 			<key>optional</key>
 			<true/>

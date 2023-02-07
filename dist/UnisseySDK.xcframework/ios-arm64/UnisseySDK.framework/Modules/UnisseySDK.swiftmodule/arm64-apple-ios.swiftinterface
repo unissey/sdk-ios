@@ -11,7 +11,20 @@ import UIKit
 import Vision
 import _Concurrency
 import _System_Foundation
-public let SDK_IOS_BUNDLE: Foundation.Bundle?
+extension Foundation.Bundle {
+  public static func uniString(_ localizedStringKey: Swift.String) -> Swift.String
+  public static func uniSdkVersion() -> Swift.String
+}
+extension SwiftUI.Text {
+  public static func uniText(_ localizedStringKey: Swift.String) -> SwiftUI.Text
+}
+extension SwiftUI.Color {
+  public static func uniColor(_ colorName: Swift.String) -> SwiftUI.Color
+}
+extension SwiftUI.Image {
+  public static func uniImage(_ imageName: Swift.String) -> SwiftUI.Image
+  public static func uniUIImage(_ imageName: Swift.String, configuration: UIKit.UIImage.Configuration? = nil) -> UIKit.UIImage?
+}
 public struct ApiParameters {
   public let key: Swift.String
   public let baseURL: Swift.String
@@ -24,74 +37,140 @@ public struct CaptureData {
   public let metadata: UnisseySDK.CaptureMetadata
 }
 public typealias VideoCaptureCB = (UnisseySDK.CaptureData) -> Swift.Void
-public typealias APIResponseCB = (UnisseySDK.WidgetResponse) -> Swift.Void
+public typealias APIResponseCB = (UnisseySDK.UnisseyAnalyzeResponse) -> Swift.Void
 public typealias CaptureMetadata = [Swift.String : Swift.String]
-public struct WidgetResponse {
+public struct UnisseyAnalyzeResponse {
   public let status: Swift.String
-  public let parentSessionId: Swift.String?
-  public let finalResults: UnisseySDK.WidgetResponse.Results?
+  public let finalResults: UnisseySDK.UnisseyAnalyzeResponse.Results?
   public let errorMessage: Swift.String?
   public let warning: Swift.String?
-  public init(status: Swift.String, parentSessionId: Swift.String?, finalResults: UnisseySDK.WidgetResponse.Results?, errorMessage: Swift.String?, warning: Swift.String?)
+  public init(status: Swift.String, finalResults: UnisseySDK.UnisseyAnalyzeResponse.Results?, errorMessage: Swift.String?, warning: Swift.String?)
   public struct Results : Swift.Codable {
-    public let liveness: UnisseySDK.WidgetResponse.Results.Liveness
-    public let faceMatching: UnisseySDK.WidgetResponse.Results.FaceMatch?
     public let sessionId: Swift.String
-    public let bundleId: Swift.String?
+    public let sessionGroupId: Swift.String?
     public let retriesRemaining: Swift.Int
-    public struct Liveness : Swift.Codable {
-      public let isGenuine: Swift.Bool
-      public let probability: Swift.Float
-      public let confidence: UnisseySDK.Confidence
-      public let vqcHints: [UnisseySDK.VqcHint]?
+    public let isGenuine: Swift.Bool?
+    public let isMatch: Swift.Bool?
+    public let details: UnisseySDK.UnisseyAnalyzeResponse.Results.Details
+    public struct Details : Swift.Codable {
+      public let mediaValidation: UnisseySDK.UnisseyAnalyzeResponse.Results.Details.MediaValidation?
+      public let liveness: UnisseySDK.UnisseyAnalyzeResponse.Results.Details.Liveness?
+      public let faceComparison: UnisseySDK.UnisseyAnalyzeResponse.Results.Details.FaceComparison?
+      public let hintsForRetry: UnisseySDK.UnisseyAnalyzeResponse.Results.HintsForRetry?
+      public struct Liveness : Swift.Codable {
+        public let result: Swift.String
+        public let confidenceLevel: UnisseySDK.UnisseyAnalyzeResponse.Results.Details.ConfidenceLevel?
+        public func encode(to encoder: Swift.Encoder) throws
+        public init(from decoder: Swift.Decoder) throws
+      }
+      public struct FaceComparison : Swift.Codable {
+        public let result: Swift.String
+        public let confidenceLevel: UnisseySDK.UnisseyAnalyzeResponse.Results.Details.ConfidenceLevel?
+        public func encode(to encoder: Swift.Encoder) throws
+        public init(from decoder: Swift.Decoder) throws
+      }
+      public enum ConfidenceLevel : Swift.String, Swift.Codable {
+        case LowConfidence
+        case HighConfidence
+        public init?(rawValue: Swift.String)
+        public typealias RawValue = Swift.String
+        public var rawValue: Swift.String {
+          get
+        }
+      }
+      public struct MediaValidation : Swift.Codable {
+        public let selfie: Swift.String
+        public let reference: Swift.String?
+        public func encode(to encoder: Swift.Encoder) throws
+        public init(from decoder: Swift.Decoder) throws
+      }
       public func encode(to encoder: Swift.Encoder) throws
       public init(from decoder: Swift.Decoder) throws
     }
-    public struct FaceMatch : Swift.Codable {
-      public let match: Swift.Bool
-      public let score: Swift.Float
-      public let vqcHints: [UnisseySDK.VqcHint]?
-      public let confidence: UnisseySDK.Confidence
+    public struct HintsForRetry : Swift.Codable {
+      public let selfie: [UnisseySDK.UnisseyAnalyzeResponse.Results.VqcHint]
       public func encode(to encoder: Swift.Encoder) throws
       public init(from decoder: Swift.Decoder) throws
+    }
+    public enum VqcHint : Swift.Int32, Swift.Codable {
+      case Mask
+      case Light
+      public init?(rawValue: Swift.Int32)
+      public typealias RawValue = Swift.Int32
+      public var rawValue: Swift.Int32 {
+        get
+      }
     }
     public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
   }
 }
-public struct Confidence : Swift.Codable {
-  public let level: UnisseySDK.ConfidenceLevel
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
-}
-public enum ConfidenceLevel : Swift.Int, Swift.Codable {
-  case LowConfidence
-  case HighConfidence
+public enum CameraState : Swift.Int {
+  case NotReady
+  case Ready
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
 }
-public enum VqcHint : Swift.Int32, Swift.Codable {
-  case Mask
-  case Light
-  public init?(rawValue: Swift.Int32)
-  public typealias RawValue = Swift.Int32
-  public var rawValue: Swift.Int32 {
-    get
-  }
-}
-@_Concurrency.MainActor(unsafe) public struct DSWidgetView : SwiftUI.View {
-  @_Concurrency.MainActor(unsafe) public init(onVideoCapture: UnisseySDK.VideoCaptureCB? = nil, apiParameters: UnisseySDK.ApiParameters? = nil, onApiResponse: UnisseySDK.APIResponseCB? = nil, themeColor: SwiftUI.Color = Color("UniBlue", bundle: SDK_IOS_BUNDLE), showExplanations: Swift.Bool = true)
+public struct Observer<Obs, Content> : SwiftUI.View where Obs : Combine.ObservableObject, Content : SwiftUI.View {
   @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
     get
   }
-  public typealias Body = @_opaqueReturnTypeOf("$s10UnisseySDK12DSWidgetViewV4bodyQrvp", 0) __
+  public typealias Body = @_opaqueReturnTypeOf("$s10UnisseySDK8ObserverV4bodyQrvp", 0) __<Obs, Content>
 }
-extension UnisseySDK.ConfidenceLevel : Swift.Equatable {}
-extension UnisseySDK.ConfidenceLevel : Swift.Hashable {}
-extension UnisseySDK.ConfidenceLevel : Swift.RawRepresentable {}
-extension UnisseySDK.VqcHint : Swift.Equatable {}
-extension UnisseySDK.VqcHint : Swift.Hashable {}
-extension UnisseySDK.VqcHint : Swift.RawRepresentable {}
+public class UnisseyViewModel : Combine.ObservableObject {
+  public var apiParameters: UnisseySDK.ApiParameters?
+  public var onVideoCapture: UnisseySDK.VideoCaptureCB?
+  public var onApiResponse: UnisseySDK.APIResponseCB?
+  public var showStartButton: Swift.Bool
+  public var cameraModel: UnisseySDK.CameraModel
+  public init(apiParameters: UnisseySDK.ApiParameters? = nil, onVideoCapture: UnisseySDK.VideoCaptureCB? = nil, onApiResponse: UnisseySDK.APIResponseCB? = nil)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_Concurrency.MainActor(unsafe) public struct UnisseyView : SwiftUI.View {
+  @_Concurrency.MainActor(unsafe) public init(viewModel: UnisseySDK.UnisseyViewModel, showExplanations: Swift.Bool = true, themeColor: SwiftUI.Color = Color.uniColor("UniBlue"))
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s10UnisseySDK0A4ViewV4bodyQrvp", 0) __
+}
+public struct StandAloneUnisseyView : SwiftUI.View {
+  public init(onVideoCapture: UnisseySDK.VideoCaptureCB? = nil, apiParameters: UnisseySDK.ApiParameters? = nil, onApiResponse: UnisseySDK.APIResponseCB? = nil, showExplanations: Swift.Bool = true, themeColor: SwiftUI.Color = Color.uniColor("UniBlue"))
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s10UnisseySDK010StandAloneA4ViewV4bodyQrvp", 0) __
+}
+@objc @_inheritsConvenienceInitializers public class CameraModel : ObjectiveC.NSObject, Combine.ObservableObject, AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @Combine.Published @_projectedValueProperty($cameraState) public var cameraState: UnisseySDK.CameraState {
+    get
+    set
+    _modify
+  }
+  public var $cameraState: Combine.Published<UnisseySDK.CameraState>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public func startCapture()
+  public var cameraViewIsActive: Swift.Bool {
+    get
+    set
+  }
+  @objc public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+  @objc override dynamic public init()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension UnisseySDK.UnisseyAnalyzeResponse.Results.Details.ConfidenceLevel : Swift.Equatable {}
+extension UnisseySDK.UnisseyAnalyzeResponse.Results.Details.ConfidenceLevel : Swift.Hashable {}
+extension UnisseySDK.UnisseyAnalyzeResponse.Results.Details.ConfidenceLevel : Swift.RawRepresentable {}
+extension UnisseySDK.UnisseyAnalyzeResponse.Results.VqcHint : Swift.Equatable {}
+extension UnisseySDK.UnisseyAnalyzeResponse.Results.VqcHint : Swift.Hashable {}
+extension UnisseySDK.UnisseyAnalyzeResponse.Results.VqcHint : Swift.RawRepresentable {}
+extension UnisseySDK.CameraState : Swift.Equatable {}
+extension UnisseySDK.CameraState : Swift.Hashable {}
+extension UnisseySDK.CameraState : Swift.RawRepresentable {}

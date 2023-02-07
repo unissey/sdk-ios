@@ -32,7 +32,7 @@ struct ContentView: View {
                         Spacer()
                     }
                 } else {
-                    DSWidgetView(onVideoCapture: { capture in
+                    StandAloneUnisseyView(onVideoCapture: { capture in
                         guard var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
                         url.appendPathComponent("video.mov") // or whatever extension the video is
                         if (try? capture.video.write(to: url)) != nil {

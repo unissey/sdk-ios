@@ -18,8 +18,8 @@ let package = Package(
 //  This doesn't work : we get an error : 'downloaded archive of binary target does not contain expected binary artifact'
 //        .binaryTarget(
 //            name: "UnisseySDK",
-//            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v1.2.xcframework.zip",
-//            checksum: "f1dc30cbb1be75cddf5596a6ab43447f8810197c716495d283ae1afd3928d18b"
+//            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v2.0.0.xcframework.zip",
+//            checksum: "5fbe9bb82c915e85c47756c292d9e4c7ca7b2c4e6d6f531d6dbe13a8b951a218"
 //        ),
         
             .binaryTarget(
