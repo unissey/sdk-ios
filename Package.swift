@@ -17,14 +17,14 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "UnisseySDK",
-            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v2.0.0.xcframework.zip",
-            checksum: "bae72d808b8dadc418aabcdd554ae42c65ac63fe72d3b42f969c5b4e29e7fc76"
+            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySDK-v2.0.1.xcframework.zip",
+            checksum: "95c4f08ad5e728e47aea499a66bef1c40255ebf1a8689e4298b86d151b93fa6d"
         ),
         
         // [Local distribution]
 //        .binaryTarget(
 //            name: "UnisseySDK",
-//            path: "./dist/UnisseySDKLocal.xcframework"
+//            path: "./dist/UnisseySDK.xcframework"
 //        ),
     ]
 )
