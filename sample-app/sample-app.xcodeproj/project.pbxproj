@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09ECF3DB279FE59700688B2D /* UnisseySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 09ECF3DA279FE59700688B2D /* UnisseySDK */; };
+		094558CC29941519002E6354 /* UnisseySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 094558CB29941519002E6354 /* UnisseySDK */; };
 		DCE4AAEF2684922A00FCF18E /* sample_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE4AAEE2684922A00FCF18E /* sample_appApp.swift */; };
 		DCE4AAF12684922A00FCF18E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE4AAF02684922A00FCF18E /* ContentView.swift */; };
 		DCE4AAF32684922B00FCF18E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE4AAF22684922B00FCF18E /* Assets.xcassets */; };
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09ECF3DB279FE59700688B2D /* UnisseySDK in Frameworks */,
+				094558CC29941519002E6354 /* UnisseySDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 			);
 			name = "sample-app";
 			packageProductDependencies = (
-				09ECF3DA279FE59700688B2D /* UnisseySDK */,
+				094558CB29941519002E6354 /* UnisseySDK */,
 			);
 			productName = "sample-app";
 			productReference = DCE4AAEB2684922A00FCF18E /* sample-app.app */;
@@ -301,7 +301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "co.thedeepsense.sample-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unissey.sample-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -323,7 +323,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "co.thedeepsense.sample-app";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unissey.sample-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -365,7 +365,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		09ECF3DA279FE59700688B2D /* UnisseySDK */ = {
+		094558CB29941519002E6354 /* UnisseySDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 09ECF3D9279FE59700688B2D /* XCRemoteSwiftPackageReference "sdk-ios" */;
 			productName = UnisseySDK;
