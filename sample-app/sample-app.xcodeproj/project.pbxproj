@@ -358,7 +358,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/unissey/sdk-ios.git";
 			requirement = {
-				branch = master;
+				branch = "ios16-test";
 				kind = branch;
 			};
 		};
