@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/unissey/sdk-ios",
+      "state" : {
+        "branch" : "v4.0.0",
+        "revision" : "4f5357fd37c508e5462502c8d2474a708b72cb04"
+      }
+    }
+  ],
+  "version" : 2
+}

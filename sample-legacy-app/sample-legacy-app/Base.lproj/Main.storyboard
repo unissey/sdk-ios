@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OLP-ct-Mnm">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="jVk-2z-baK">
+            <objects>
+                <navigationController id="OLP-ct-Mnm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g0g-B0-hAT">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SpY-yh-Cfd" kind="relationship" relationship="rootViewController" id="7ct-e7-M6H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nrg-oa-VQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1471" y="-2"/>
+        </scene>
+        <!--Unissey Hosting Controller-->
+        <scene sceneID="EQQ-aa-FMd">
+            <objects>
+                <hostingController id="SpY-yh-Cfd" customClass="UnisseyHostingController" customModule="sample_legacy_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PA1-AR-8gy"/>
+                    <connections>
+                        <segue destination="gYw-ZP-mXz" kind="show" identifier="unisseyViewToPlayerView" id="38y-Z0-5cs"/>
+                    </connections>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Rv-Et-0GP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-636" y="-2"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="PZx-Yu-aoR">
+            <objects>
+                <viewController id="gYw-ZP-mXz" customClass="VideoPlayerViewController" customModule="sample_legacy_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ApV-JC-02r">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-5Z-V2t">
+                                <rect key="frame" x="16" y="103" width="361" height="536.33333333333337"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQ2-Pa-HP9">
+                                <rect key="frame" x="159" y="689.33333333333337" width="75" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="snA-tY-puJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DfG-5Z-V2t" firstAttribute="top" secondItem="snA-tY-puJ" secondAttribute="top" id="3HO-dB-TiO"/>
+                            <constraint firstItem="KQ2-Pa-HP9" firstAttribute="top" secondItem="DfG-5Z-V2t" secondAttribute="bottom" constant="50" id="Rhx-Od-9t0"/>
+                            <constraint firstItem="DfG-5Z-V2t" firstAttribute="leading" secondItem="snA-tY-puJ" secondAttribute="leading" constant="16" id="W7m-FG-nVx"/>
+                            <constraint firstItem="snA-tY-puJ" firstAttribute="trailing" secondItem="DfG-5Z-V2t" secondAttribute="trailing" constant="16" id="gE6-aK-xha"/>
+                            <constraint firstItem="DfG-5Z-V2t" firstAttribute="height" secondItem="snA-tY-puJ" secondAttribute="height" multiplier="0.75" id="quP-WI-MCY"/>
+                            <constraint firstItem="KQ2-Pa-HP9" firstAttribute="centerX" secondItem="snA-tY-puJ" secondAttribute="centerX" id="tRX-re-wQV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tev-SJ-adR"/>
+                    <connections>
+                        <outlet property="restartButton" destination="KQ2-Pa-HP9" id="0NB-r3-vNM"/>
+                        <outlet property="videoView" destination="DfG-5Z-V2t" id="9H6-mt-oel"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cKP-8W-vQJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="191.6030534351145" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
