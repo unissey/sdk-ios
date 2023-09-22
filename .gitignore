@@ -1,4 +1,9 @@
+# Build folders
+.build/
+
 # Xcode user data
 xcuserdata/
+
+# MacOS file
 .DS_Store
 
