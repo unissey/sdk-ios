@@ -1,322 +1,565 @@
-_<p align="center">Unissey Confidential</p>_
-![logo](https://user-images.githubusercontent.com/2079561/134871554-4682d336-60a0-48d1-9dd3-6e8330e6e013.png)
+![Unissey logo](images/unissey-logo.png)
 
-# Unissey iOS SDK
+<!-- Using HTML notation instead of MD to prevent the TOC generation from picking up this header --> 
+<h1>Unissey iOS/macOS SDK</h1>
 
-> Unissey's iOS Library
+This iOS/macOS Framework provides an easy way to obtain a video selfie to be used with Unissey's
+SaaS
+solution on an iOS or macOS application. This SDK has been developed with SwiftUI, allowing for
+an easy integration on both SwiftUI apps and traditional UIKit apps.
 
-`UnisseySDK` is the iOS library that basically handles video capture for Unissey API. 
-It is distributed as a Swift Package and can easily be used in Swift applications. It supports iOS from iOS 13. The library handles all processing and capture required by Unissey's biometric web.
+<!-- @formatter:off -->
+<!-- TOC -->
+  * [1. Installation & requirements](#1-installation--requirements)
+    * [1.1 Requirements](#11-requirements)
+    * [1.2 Installation](#12-installation)
+      * [1.2.1 Get a GitHub personal access token](#121-get-a-github-personal-access-token)
+      * [1.2.2 Add you GitHub account on Xcode](#122-add-you-github-account-on-xcode)
+      * [1.2.3 Download the framework](#123-download-the-framework)
+  * [2. Getting started](#2-getting-started)
+    * [2.1 Overview](#21-overview)
+    * [2.2 UnisseyViewModel](#22-unisseyviewmodel)
+    * [2.3 UnisseyScreen](#23-unisseyscreen)
+      * [2.3.1 SwiftUI](#231-swiftui)
+      * [2.3.2 Traditional UIKit app](#232-traditional-uikit-app)
+  * [3. Reference](#3-reference)
+    * [3.1 AcquisitionPreset](#31-acquisitionpreset)
+    * [3.2 OnRecordEndedListener](#32-onrecordendedlistener)
+    * [3.3 OnStateChangedListener](#33-onstatechangedlistener)
+    * [3.4 SessionConfig](#34-sessionconfig)
+    * [3.5 UnisseyViewModel's public variables and functions](#35-unisseyviewmodels-public-variables-and-functions)
+    * [3.6 String resources](#36-string-resources)
+    * [3.7 Colors](#37-colors)
+    * [3.8 Images](#38-images)
+    * [3.9 Typography](#39-typography)
+  * [4. Advanced usage](#4-advanced-usage)
+    * [4.1 Specifying a SessionConfig](#41-specifying-a-sessionconfig)
+    * [4.2 Customizing the texts and translations](#42-customizing-the-texts-and-translations)
+    * [4.3 Customizing the assets (colors and images)](#43-customizing-the-assets--colors-and-images-)
+    * [4.4 Customizing the types](#44-customizing-the-types)
+    * [4.5 Auto-starting the video capture when the camera's ready](#45-auto-starting-the-video-capture-when-the-cameras-ready)
+  * [5. Common issues](#5-common-issues)
+    * [5.1 Add camera requirement to your application](#51-add-camera-requirement-to-your-application)
+<!-- TOC -->
+<!-- @formatter:on -->
 
-1. [Installation](#1-installation)
-2. [Getting Started](#2-getting-started)
-3. [Reference](#3-reference)
-4. [About](#4-about)
+## 1. Installation & requirements
 
-# 1. Installation
+### 1.1 Requirements
 
-## Get a personnal access token
+The version of your app must be at least iOS 14.0 and macOS 11.0 in order to use this
+SDK.
 
-First generate an access token by following [this link](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). Make sure to include at least the `repo` && `read:packages` permission to the access token.
+### 1.2 Installation
 
-Then, to get access permissions, you will need to contact the Unissey team to provide your github account name.
+If you already have Xcode configured with a GitHub personal access token with the proper permissions, you can skip directly to the third step of the installation.
 
-## Authenticate on Xcode
+#### 1.2.1 Get a GitHub personal access token
 
-> You can skip this step if you have already added your GitHub account to XCode.
+First, you need to generate an access token by following the instructions provided [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) by GitHub. Make sure to include at least the `repo` and `read:packages` permissions.
 
-Open XCode, go to preferences (`CMD + ,`), go to the second tab (accounts), add a new account (bottom left, the little `+`), select "GitHub" then add your GitHub account's email and the personnal access token you previously generated.
+Then, to gain access to Unissey's SDK, you need to contact the Unissey team and provide your GitHub account name.
 
-## Download the framework
+#### 1.2.2 Add you GitHub account on Xcode
 
-You can download our framework using the Swift Package Manager. To do so, in Xcode, go to File -> Swift Packages -> Add Package Depency. Then add the following URL in the search bar and press enter: `https://github.com/unissey/sdk-ios`. Xcode will prompt you for a version, you can keep the default values and click next and then finish.
+Open Xcode, open the `Settings` window (`CMD + ,`) and go to the second tab `Accounts`. Add a new account by clicking on the `+` button on the bottom left corner, select `GitHub` and add your GitHub account's email and the personal access token you generated previously.
 
-# 2. Getting Started
+#### 1.2.3 Download the framework
 
-## Common installation
+Finally, you can download our framework using the Swift Package Manager. To do so, in Xcode, go to File -> Add Packages... and enter the following URL in the search bar: `https://github.com/unissey/sdk-ios`. There Xcode will let you define the dependency rule. You can choose a specific version of your choice or use the latest version available that should be on the `master` branch.
 
-There are two main use cases to our SDK described below. One where the video is captured and sent back to you for your own processing and the other where the video is directly sent to our API (Note that this latest use case is reserved to Demo or POC application)
+## 2. Getting started
 
-> Note: If your app does not use a `NavigationView`, you must wrap the `UnisseyView` in one for navigation between screens to work.
+### 2.1 Overview
 
-## 2.1 Video Capture Use Case
+Unissey's SDK offers three screens, one of which is optional:
 
-This is actually the recommended use case for production app. The captured video, and related metadata object, are just sent back to the app, that typically sends them to a backend that is responsible for calling Unissey Web API. To implement this use case, you simply pass a method to the `onVideoCapture` callback to receive the video (and metadata). You obviously don't provide `apiParameters` and `onApiResponse`.
+1. If you choose to, the user is greeted with a screen displaying instructions on what to do to
+   ensure our algorithms are delivering the best results possible.
+2. Then, if your application hasn't already asked for the user's permission to use the camera, a
+   screen presenting a brief explanation on why the app requires the use of the camera is displayed.
+   A button on this page will make the system dialog appear to request the user's consent to let the
+   app use the camera. If the user happens to decline, subsequent clicks on this button will
+   redirect to the settings page where the user will have to manually grant permission to the
+   camera.
+3. Finally, if the permission has been granted, the main screen is displayed featuring a live
+   preview of the camera. This screen provides a button (or none if you choose to hide it) that
+   starts the video capture process. This process is divided in two steps. The SDK will start by
+   detecting the user's face and providing indications, based on the face's location, to help the
+   user position their face in the center of the frame. Once it's done and the user stayed still for
+   at least one second, the actual video recording will start for the duration you specified with
+   the
+   Acquisition Preset.
 
-> Note: Passing in valid api parameters as input will result in an API call, regardless of whether or not you define the `onVideoCapture` callback. And vice-versa, the `onVideoCapture` callback will be triggered even if the API is called.
+The sample apps are here to provide a basic implementation of this library that you can use as a
+base for your integration inside your own application. Whether you're using SwiftUI
+or a traditional approach with UIKit, you will have to create
+a `UnisseyViewModel` and a `UnisseyScreen` to interact with this SDK. The `UnisseyViewModel` is the
+developer interface with which you can interact in your application's code, it's also the class that
+you can configure to suit your needs. The `UnisseyScreen` on the other hand holds the user interface
+and it's what your user will see and interact with.
+
+### 2.2 UnisseyViewModel
+
+The `UnisseyViewModel` class offers a constructor that should be used to create an
+instance of it. Only an `AcquisitionPreset` object and an `OnRecordEndedListener` are necessary to
+use the SDK. Note that the `OnRecordEndedListener` is optional during the initialization of
+the `UnisseyViewModel` since, most of the time, you're going to want to reference `self` inside your
+callback to handle the result, and there are situations where you will not be able to
+reference `self` when initializing the object. This field is still mandatory for the SDK to hand
+back a response, if you fail to provide an `OnRecordEndedListener`, the user will get stuck at the
+end of the video acquisition.
+
+In addition to those parameters, the SDK can be further customized with an `OnStateChangedListener`
+and
+a `SessionConfig`. All of these parameters are detailed in the [Reference](#3-reference) section.
+
+See the following code for simple usages where the default values are suitable for your use case:
 
 ```swift
-import UnisseySDK
-import SwiftUI
+let unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast, onRecordEndedListener: { result in
+    do {
+        // `result` is a Result<Success, Failure> containing the response or an error
+        let response = try result.get()
+        print("Video record ended with file path: '\(response.videoFilePath)'")
+    } catch {
+        print("An error occurred while recording the video: \(error)")
+    }
+})
+```
 
+### 2.3 UnisseyScreen
+
+Once you have an instance of `UnisseyViewModel`, you can create the `UnisseyScreen` with the
+ViewModel as a parameter.
+
+#### 2.3.1 SwiftUI
+
+In SwiftUI, you can use the `UnisseyScreen` as you would use any other View in your
+application:
+
+```swift
 struct ContentView: View {
-  var body: some View {
-    NavigationView {
-      VStack {
-        StandAloneUnisseyView(
-          onVideoCapture: { capture in
-            print("\nReceived: \(capture)\n\n")
-            // Do something with the captured video
-            // Note: Do not forget to send `capture.metadata` to our
-            // api along with `capture.video`
-          }
-        )
-      }
+    var body: some View {
+        let unisseyViewModel = ...
+     
+        UnisseyView(unisseyViewModel: unisseyViewModel)
     }
-  }
 }
 ```
 
-## 2.2 Api Call Use Case
+#### 2.3.2 Traditional UIKit app
 
-⚠️This use case is not recommended in production, for security reasons, and should be limited to POC / demo settings only. In production, API calls should be made from your backend only.
-
-The SDK can make the call to Unissey analysis Web API automatically after capturing the video if you specify the appropriate parameters.
+If your application is built with the older Storyboard and UIKit system, you can rely on
+a [UIHostingController](https://developer.apple.com/documentation/swiftui/uihostingcontroller) to
+host the SwiftUI UnisseyView. If you're not familiar with this class, it's a view controller that
+encapsulates and manages a SwiftUI hierarchy. You just need to provide a SwiftUI view as
+the `rootView` parameter when initializing your hosting controller:
 
 ```swift
-import UnisseySDK
+import Foundation
 import SwiftUI
+import UnisseySdk
 
+class UnisseyHostingController: UIHostingController<UnisseyView> {
+    
+    var videoUri: URL?
+    let unisseyViewModel: UnisseyViewModel
+    
+    required init?(coder: NSCoder) {
+        // Set up the UnisseyViewModel and UnisseyView
+        unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast)
+        let unisseyView = UnisseyView(unisseyViewModel: unisseyViewModel)
+        super.init(coder: coder, rootView: unisseyView)
+    }
+    
+    override func viewDidLoad() {
+        // Register the callback
+        unisseyViewModel.onRecordEndedListener = { result in
+            do {
+                // `result` is a Result<SessionResponse, Error> containing the response or an error
+                let response = try result.get()
+                print("Video record ended with file path: '\(response.videoFilePath)'")
+                self.videoUri = response.videoFilePath
+                
+                DispatchQueue.main.async {
+                    // Navigate to the next screen
+                }
+            } catch {
+                print("An error occurred while recording the video: \(error)")
+            }
+        }
+    }
+}
+```
+
+You can use this Unissey Hosting Controller as normal in your storyboard:
+
+![Storyboard](images/Storyboard.png)
+
+## 3. Reference
+
+### 3.1 AcquisitionPreset
+
+The present SDK provides presets defining how the video is recorded. Even if you decide to override
+its values, you must select a preset when creating an instance of `UnisseyViewModel`.
+Here are the 2 current possible values of `AcquisitionPreset`:
+
+| Preset name       | Recording duration | Video quality                         | Description                                                                                                                        |
+|-------------------|--------------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| selfieFast        | 1 second           | 480p resolution if possible, or 720p  | The preset that most use cases rely on. It provides the minimal configuration needed for Unissey's AI models to work at their best |
+| selfieSubstantial | 3 seconds          | 720p resolution if possible, or 1080p | The preset fit for use cases aiming for a PVID substantial compliance                                                              |
+
+### 3.2 OnRecordEndedListener
+
+This is the callback that triggers when the user is done recording a video.
+
+This is a type alias for `(Result<SessionResponse, Error>) -> Void`.
+
+The `SessionResponse`:
+
+| Parameter name | Type   | Description                                                                                          |
+|----------------|--------|------------------------------------------------------------------------------------------------------|
+| videoFilePath  | URL    | The path to the video file saved in the cache directory of your app                                  |
+| metadata       | String | A String containing technical metadata useful to Unissey to be added to the request to Unissey's API |
+
+### 3.3 OnStateChangedListener
+
+This is a callback that triggers everytime there's a significant change of state while the user is
+interacting with the SDK. This callback offers a possibility for your application to react to SDK
+and user events while the SDK is being used. This allows for more advanced usages that you could
+have, some of which are described in the [Advanced usages](#4-advanced-usage) section.
+
+This is a type alias for `(UnisseyEvent) -> Void`.
+
+A `UnisseyEvent` represents an event happening inside the SDK, often initiated by the user. Here's
+an exhaustive list of possible events:
+
+| Event                     | Description                                                                                                                                                                                                                                                                              |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| instructionsShown         | When the Instructions screen is displayed to the user                                                                                                                                                                                                                                    |
+| cameraPermissionShown     | When the Camera Permission screen is displayed to the user. This screen provides a simple explanation as to why this permission is necessary                                                                                                                                             |
+| cameraPermissionRequested | When the camera permission has been requested, meaning when the system alert is being displayed to the user                                                                                                                                                                              |
+| cameraPermissionAccepted  | When the user has accepted the permission                                                                                                                                                                                                                                                |
+| cameraPermissionDenied    | When the user has declined the permission                                                                                                                                                                                                                                                |
+| cameraPreviewShown        | When the Video Capture screen is displayed, showing a live preview of the camera                                                                                                                                                                                                         |
+| cameraReady               | There is an initialization delay before the camera is fully set up and available. This event fires when the camera is actually ready to record a video.                                                                                                                                  |
+| videoCaptureStarted       | When the video capture has started. The term "video capture" refers to the process that begins when the user hits the "Start" button. The recording doesn't start right away, there's a first stage where a face detection is happening to help the user position their face in the oval |
+| videoRecordStarted        | When the recording has started                                                                                                                                                                                                                                                           |
+| videoRecordProgress       | This event is the only one to feature a parameter. It fires multiple times during the recording and provides a `progress` parameter indicating the recording progress with a value contained between 0 and 1 (1 being 100%)                                                              |
+| videoRecordEnded          | When the recording is over. This event triggers along with the `OnRecordEndedListener` callback                                                                                                                                                                                          |
+
+### 3.4 SessionConfig
+
+If the default state of the SDK doesn't suit your needs, the `UnisseyViewModel` can take
+a `SessionConfig` parameter with ways to customize the behavior of the library.
+
+Here's what a `SessionConfig` is composed of:
+
+| Parameter name  | Type            | Description                                                     |
+|-----------------|-----------------|-----------------------------------------------------------------|
+| recordingConfig | RecordingConfig | A nested configuration object meant for technical configuration |
+| uiConfig        | UiConfig        | A nested configuration object meant for graphic configuration   |
+
+The `RecordingConfig`:
+
+| Parameter name      | Type            | Default value | Description                                                                                                                             |
+|---------------------|-----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| recordingDurationMs | Float?          | nil           | The duration of the recording, overrides the value from the `AcquisitionPreset`                                                         |
+| qualities           | [VideoQuality]  | nil           | An array of `VideoQuality` to override the qualities set in the `AcquisitionPreset`. The qualities are to be set in order of preference |
+
+The `VideoQuality` is an enum representing available qualities that the video can be recorded in:
+
+| Quality | Resolution                                         |
+|---------|----------------------------------------------------|
+| lowest  | 144p                                               |
+| sd      | 480p                                               |
+| hd      | 720p                                               |
+| fhd     | 1080p                                              |
+| uhd     | 2160p                                              |
+| highest | The highest resolution possible on the user device |
+
+When providing custom qualities to override the preset, you should make sure to provide plausible
+fallback values to support as many devices as possible. If no provided quality is available on the
+user's device, an error will be thrown on the `OnRecordEndedListener` callback.
+
+The `UiConfig`:
+
+| Parameter name                        | Type  | Default value | Description                                                                                                                                                          |
+|---------------------------------------|-------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| showInstructions                      | Bool  | true          | Specify whether to show the first instructions screen or not                                                                                                         |
+| showVideoCaptureButton                | Bool  | true          | Specify whether to show the "Start" button on the video capture screen or not                                                                                        |
+| showWideWindowPreviewInputsToTheRight | Bool  | true          | Specify whether the preview inputs should be displayed to the right of the camera preview or to the left in wide window mode (typically on phones in landscape mode) |
+
+### 3.5 UnisseyViewModel's public variables and functions
+
+A few variables and functions in the `UnisseyViewModel` are accessible in read or write mode from
+the client's application. Here's the exhaustive list:
+
+| Name              | Type                    | Description                                                                                                                                              |
+|-------------------|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| currentPage       | UnisseyPage (read only) | Indicates which screen is being displayed to the user. It's an enum with values comprised in `instructions`, `cameraPermission` and `videoCapture`       |
+| navigateUp        | Function                | Tells the `UnisseyViewModel` to navigate one screen up                                                                                                   |
+| startVideoCapture | Function                | Tells the `UnisseyViewModel` to start the video capture process. Useful when you want the video capture to autostart when the screen appears for example |
+
+### 3.6 String resources
+
+Here's an exhaustive list of the String resources used in the SDK and that can be overridden (see
+the [Customizing the texts and translations](#42-customizing-the-texts-and-translations) section to
+know how to override them):
+
+| Key                                          | English value                                                                                    | French value                                                                                              |
+|----------------------------------------------|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| unissey_instructions_title                   | Record a short video selfie                                                                      | Enregistrez un selfie vidéo                                                                               |
+| unissey_instructions_subtitle                | Let's make sure no one is impersonating you.                                                     | Cette étape permet de vérifier que personne n'usurpe votre identité                                       |
+| unissey_instruction_maintain_stable_position | Look straight at the camera, and keep your face clearly visible                                  | Maintenez votre visage droit et entièrement visible                                                       |
+| unissey_instruction_plain_expression         | Have a plain expression                                                                          | Conservez une expression neutre                                                                           |
+| unissey_instruction_well_lit_environment     | Stand in a well-lit environment                                                                  | Assurez-vous d’être suffisamment éclairé                                                                  |
+| unissey_continue_label                       | Continue                                                                                         | Continuer                                                                                                 |
+| unissey_camera_permission_explanation        | The camera permission is required for this feature to be available. Please grant the permission. | L'utilisation de la caméra est nécessaire à cette fonctionnalité. Merci d'autoriser l'usage de la caméra. |
+| unissey_camera_permission_button             | Request permission                                                                               | Donner la permission                                                                                      |
+| unissey_video_capture_title                  | The acquisition will last %d second(s).                                                          | L'acquisition durera %d seconde(s).                                                                       |
+| unissey_start_label                          | Start                                                                                            | Commencer                                                                                                 |
+| unissey_instruction_position_face_oval       | Position your face in the oval                                                                   | Placez-vous dans l'ovale                                                                                  |
+| unissey_instruction_multiple_faces_detected  | Multiple faces detected                                                                          | Plusieurs visages détectés                                                                                |
+| unissey_instruction_no_face_detected         | No face detected                                                                                 | Aucun visage détecté                                                                                      |
+| unissey_instruction_get_closer               | Get closer                                                                                       | Rapprochez-vous                                                                                           |
+| unissey_instruction_get_further_away         | Get further away                                                                                 | Reculez-vous                                                                                              |
+| unissey_instruction_move_right               | Move your face to the right                                                                      | Plus vers la droite                                                                                       |
+| unissey_instruction_move_left                | Move your face to the left                                                                       | Plus vers la gauche                                                                                       |
+| unissey_instruction_move_up                  | Move your face up                                                                                | Plus vers le haut                                                                                         |
+| unissey_instruction_move_down                | Move your face down                                                                              | Plus vers le bas                                                                                          |
+| unissey_instruction_do_not_move              | Perfect, don't move                                                                              | Parfait, ne bougez plus                                                                                   |
+
+### 3.7 Colors
+
+This SDK offers a few Color assets to theme its UI elements that can be overridden (see
+[Customizing the assets (colors and images)](#43-customizing-the-assets--colors-and-images-) section
+to know how to override them).
+
+Here's the exhaustive list of colors used in the SDK along with their default values corresponding
+to the Unissey color theme:
+
+| Key                                        | Default light mode value | Default dark mode value |
+|--------------------------------------------|--------------------------|-------------------------|
+| UnisseyCardBackground                      | `#F6F6F6`                | `#48454F`               |
+| UnisseyOverlayBackground                   | `#FFFFFF` - 80% opacity  | `#000000` - 80% opacity |
+| UnisseyPrimary                             | `#09165C`                | `#3C58E8`               |
+| UnisseySecondary                           | `#3C58E8`                | `#3C58E8`               |
+
+### 3.8 Images
+
+This SDK contains three customizable images (see
+[Customizing the assets (colors and images)](#43-customizing-the-assets--colors-and-images-) section
+to know how to override them). Those images illustrate the three instructions on the first optional
+screen.
+
+Here's the exhaustive list of images:
+
+| Key                        | Description                                                            |
+|----------------------------|------------------------------------------------------------------------|
+| UnisseyFacePositionPicto   | The first illustration showing how to position the user's face         |
+| UnisseyFaceExpressionPicto | The second illustration indicating to have a neutral expression        |
+| UnisseyFaceLightPicto      | The third illustration that displays that a good lighting is necessary |
+
+### 3.9 Typography
+
+The SDK provides customizable fonts used throughout the three screens (
+see [Customizing the types](#44-customizing-the-types) section to know how to override them). Those
+are SwiftUI fonts that follow default text styles, allowing them to scale automatically with the
+user's accessibility settings.
+
+Here's the exhaustive list of types along with their default values:
+
+| Parameter name                         | Default family | Default weight | Default Text Style |
+|----------------------------------------|----------------|----------------|--------------------|
+| unisseyHeadline                        | System Default | Bold           | Font.title         |
+| unisseyTitle                           | System Default | Bold           | Font.title3        |
+| unisseyBody                            | System Default | Normal         | Font.body          |
+| unisseyLabel                           | System Default | Medium         | Font.body          |
+
+## 4. Advanced usage
+
+### 4.1 Specifying a SessionConfig
+
+To give you an idea of how you can customize the SDK to fit your needs using the `SessionConfig`,
+here's an example use case. Say you're happy with the SDK but you'd rather have your own
+instructions page, to make sure it fits your UI Design. And you want the video recording to last 2
+seconds instead of the default 1 second of the `SelfieFast` preset, for whatever reason.
+
+You could leverage the `SessionConfig` to achieve this:
+
+```swift
+let recordingConfig = RecordingConfig(recordingDurationMs: 2000)
+let uiConfig = UiConfig(showInstructions: false)
+let sessionConfig = SessionConfig(recordingConfig: recordingConfig, uiConfig: uiConfig)
+
+let unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast,
+                                        sessionConfig: sessionConfig) { result in
+    ...
+}
+```
+
+### 4.2 Customizing the texts and translations
+
+The Unissey SDK provides various default English texts as well as a French translation that you can
+choose to leave as they are. However you're free to override any or all of them through
+the `Localizable.strings` and `Localizable.stringsdict` resource file if they're not fit for your
+needs.
+
+To do this, you just need to add a line in your `Localizable.strings` for each text you want to
+override. An exhaustive list of the texts you can redefine is available in
+the [String resources](#36-string-resources) section. You can redefine any language and even define
+your own that isn't English or French.
+All of our strings' keys are prefixed with "unissey" to prevent any conflict with the naming of your
+own string resources.
+
+There is a special case for the `unissey_video_capture_title` string. Because the string can be
+pluralized according to the duration of the video, it's defined in a separate file of
+type `.stringsdict` that allows this pluralization out of the box.
+
+Here's our definition of this string, were you to override it:
+
+```
+<dict>
+    <key>unissey_video_capture_title</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@recording_duration_seconds@</string>
+        <key>recording_duration_seconds</key>
+        <dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>lld</string>
+            <key>zero</key>
+            <string>The acquisition will last %lld seconds.</string>
+            <key>one</key>
+            <string>The acquisition will last %lld second.</string>
+            <key>other</key>
+            <string>The acquisition will last %lld seconds.</string>
+        </dict>
+    </dict>
+</dict>
+```
+
+And here's the view from Xcode:
+
+![Localizable.stringsdict](images/Localizable.png)
+
+**Example:** Overriding the Instructions screen's title
+
+```strings
+"unissey_instructions_title" = "My custom title inside Unissey's SDK";
+```
+
+### 4.3 Customizing the assets (colors and images)
+
+This SDK exposes some colors and images in its `Assets.xcassets` directory. They can be freely
+overridden by just providing your own colors and images using the same keys as the ones defined in
+the Framework and detailed in the [Colors](#37-colors) and [Images](#38-images) sections.
+
+![Assets](images/Assets.png)
+
+### 4.4 Customizing the types
+
+This SDK is using the default system fonts. It exposes a number of variables that can be overridden
+by the client's application, which are all listed in the [Typography](#39-typography) section. To
+override a type, you just need to redefine the corresponding value anywhere in your application
+before you create the UnisseyScreen. You can have a look at
+the [official documentation](https://developer.apple.com/documentation/swiftui/applying-custom-fonts-to-text/)
+to see how to define and import custom fonts in your application.
+
+**Example:** Let's say you want to change the font family to "Futura" which should be present on iOS
+devices by default. You just need to write this function and call it somewhere
+before `UnisseyScreen` is instantiated, it could be in your app's initializer for example:
+
+```swift
+import SwiftUI
+import UnisseySdk
+
+@main
+struct MyAwesomeSwiftUiApp: App {
+    init() {
+        customizeUnisseyTypography()
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+func customizeUnisseyTypography() {
+    unisseyHeadline = Font.custom("Futura", size: 24, relativeTo: .title).weight(.bold)
+    unisseyTitle = Font.custom("Futura", size: 18, relativeTo: .title3).weight(.bold)
+    unisseyBody = Font.custom("Futura", size: 16, relativeTo: .body)
+    unisseyLabel = Font.custom("Futura", size: 16, relativeTo: .body).weight(.medium)
+}
+```
+
+⚠️ **NOTE:** Do not forget to import `UnisseySdk` to gain access to the typography variables. Note
+that the example makes use of the SwiftUI `Font.custom()` function to apply a font supporting
+dynamic sizing to match the user's accessibility settings in terms of font size, as explained in
+the [official documentation](https://developer.apple.com/documentation/swiftui/applying-custom-fonts-to-text/#Apply-a-font-supporting-dynamic-sizing).
+
+### 4.5 Auto-starting the video capture when the camera's ready
+
+This SDK provides an [OnStateChangedListener](#33-onstatechangedlistener) that you can leverage to
+achieve more advanced behavior. One good example of advanced usage would be to use this listener,
+along with the public function `startVideoCapture()`, to auto-start the video capture
+when the camera is ready, so that the user doesn't have to click on the "Start" button.
+
+First of all, you're going to hide the "Start" button which doesn't make any sense if we want the
+video to be captured right away. Then, you need to implement an `OnStateChangedListener` and
+trigger the `startVideoCapture()` function when the SDK's state becomes `cameraReady`.
+
+Here's how you could do that in SwiftUI:
+
+```swift
 struct ContentView: View {
-  var refImage: UIImage?
-  var body: some View {
-    NavigationView {
-      VStack {
-        StandAloneUnisseyView(
-          apiSettings: ApiSettings(
-            key: "YOUR_API_KEY",
-            baseURL: "https://api-analyze.unissey.com/api",
-            gdprConsent: true,
-            referenceImage: refImage?.jpegData(compressionQuality: 0.6)
-          ),
-          onApiResponse: { response in
-            print("\nReceived: \(response)\n\n")
-            // Do something with the results
-          }
-        )
-      }
+    var body: some View {
+        let unisseyViewModel = createUnisseyViewModel()
+        
+        UnisseyView(unisseyViewModel: unisseyViewModel)
     }
-  }
-}
-```
-The above samples use `StandAloneUnisseyView`. It's the easier and quicker way to use Unissey SDK. But, if you need more controls, and especially if you have to interact with the underlying model , you can use `UnisseyView` with your own instance of `UnisseyViewModel`.
-
-
-# 3. Reference
-
-## 3.1 StandAloneUnisseyView
-This View is the easier way to use the Unissey SDK. It's normally enough for most use cases.
-See the samples above that demonstrate how to use it.
-
-### constructor
-```swift
-public init(
-        onVideoCapture: VideoCaptureCB? = nil,
-        apiParameters: ApiParameters? = nil,
-        onApiResponse: APIResponseCB? = nil,
-        showExplanations: Bool = true,
-        themeColor: Color = Color.uniColor("UniBlue")
-    )
-
-```
-
-#### parameters
-
-| Property              | Type                       | Default           | Description                                                                                                                                                                                                                                  |
-| --------------------- | -------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| onVideoCapture        | `(CaptureData) -> Void`    | `nil`             | Callback called with the video file and some meta-data required by our API.                                                                                                                                                                  |
-| apiParameters         | `ApiParameters`            | `nil`             | API key and base URL, gdpr consent and optional reference image to make analyze API call. The SDK will not call an API if `nil`. You therefore need to provide a handler for video capture (`captureVideo`) if you do not set apiParameters. |
-| onApiResponse         | `(UnisseyAnalyzeResponse) -> Void` | `nil`             | Callback function which is called with the response of the API call if there is one and it is successful (not called for retries). Is not called if `apiParameters` is nil.                                                                  |
-| showExplanations      | `Bool`                     | `true`            | Set to `false` if you do not wish to show the explanation screen before the video capture. |
-| themeColor            | `Color`                    | `Color("DSTeal")` | Primary colour used throughout the SDK's UI                            |
-
-All the parameters are optional, but you cannot actually define none of them.
-If `apiParameters` is defined, you certainly need to get the API response, and then, `onApiResponse`should be defined as well.
-If `apiParameters` is not defined, you certainly need to get the video (and metadata), and then, `onVideoCapture`should be defined.
-
-##### ApiParameters
-```swift
-public struct ApiParameters {
-  let key: String // Your Unissey API Key
-  let baseURL: String // The base URL of the API (eg. https://test.api-analyze.unissey.com/api/v2)
-  let gdprConsent: Bool // Indicates whether proper consent was given for Unissey to store the uploaded medias.
-  let referenceImage: Data? // Image to be uploaded to the API for face comparison. Can be left to `nil` to not do face comparison or use the image captured by the SDK if `captureReferenceImage == true`
-};
-```
-
-
-#### callbacks
-
-```swift
-public typealias VideoCaptureCB = (CaptureData) -> Void
-
-public struct CaptureData {
-    let video: Data
-    let metadata: CaptureMetadata // A [String: String] object that needs to be JSON stringified and sent to the API. This is done automatically by the SDK if `apiParameters` are set.
-}
-
-public typealias CaptureMetadata = [String: String]
-```
-
-```swift
-public typealias APIResponseCB = (UnisseyAnalyzeResponse) -> Void
-
-
-public struct UnisseyAnalyzeResponse {
-    public let status: String
-    public let finalResults: Results?
-    public let errorMessage: String?
-    public let warning: String?
-
-    public struct Results: Codable {
-        public let sessionId: String
-        public let sessionGroupId: String?
-        public let retriesRemaining: Int
-        public let isGenuine: Bool?
-        public let isMatch: Bool?
-        public let details: Details
-        // Not yet implemented :  public let logs: [Log]
+    
+    func createUnisseyViewModel() -> UnisseyViewModel {
+        let sessionConfig = SessionConfig(uiConfig: UiConfig(showVideoCaptureButton: false))
         
-        public struct Details: Codable {
-            public let mediaValidation: MediaValidation?
-            // Not yet implemented : public let faceDetection: FaceDetection?
-            public let liveness: Liveness?
-            public let faceComparison: FaceComparison?
-            // unused by now : public let injection: Injection?
-            public let hintsForRetry: HintsForRetry?
-            
-            
-            public struct Liveness: Codable {
-                public let result: String       // "genuine", "suspected_spoof", "not_reached"
-                public let confidenceLevel:ConfidenceLevel?
-            }
-
-            public struct FaceComparison: Codable {
-                public let result: String       // "match", "suspected_mismatch", "not_reached"
-                public let confidenceLevel:ConfidenceLevel?
-            }
-            
-            public enum ConfidenceLevel: String, Codable {
-                case LowConfidence = "low"
-                case HighConfidence = "high"
-            }
-            
-            public struct MediaValidation: Codable {
-                public let selfie: String       // "valid", "unreadable", "insufficient_frame_count"
-                public let reference:String?    // "valid", "unreadable", "insufficient_frame_count"
-            }
-        }
-        public struct HintsForRetry: Codable {
-            public let selfie: HintsList
+        let unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast, sessionConfig: sessionConfig) { result in
+            ...
         }
         
-        public struct HintsList: Codable {
-            public let hints:[VqcHint]
+        unisseyViewModel.onStateChangedListener = { state in
+            if case .cameraReady = state {
+                unisseyViewModel.startVideoCapture()
+            }
         }
         
-        public enum VqcHint: Int32, Codable {
-            case Mask = 100
-            case Light = 200
-        }
+        return unisseyViewModel
     }
 }
 ```
 
-## 3.2 UnisseyViewModel
-In some specific use cases, `StandAloneUnisseyView` is not enough. If you need more controls, and especially if you have to interact with the underlying model , you can use `UnisseyViewModel` in conjunction with `UnisseyView` (cf §3.3)
-This allows to hide the 'start' button and trig capture programmatically.
+We're creating the `UnisseyViewModel` in a dedicated function to avoid
+the `Type '()' cannot conform to 'View'` error in SwiftUI when trying to assign
+an `OnStateChangedListener` on our `UnisseyViewModel`.
 
-### constructor
+Note that doing it in UIKit is pretty much exactly the same as in SwiftUI.
 
-```swift
-public init(apiParameters: ApiParameters? = nil,
-                onVideoCapture: VideoCaptureCB? = nil,
-                onApiResponse: APIResponseCB? = nil) 
+## 5. Common issues
 
-```
+### 5.1 Add camera requirement to your application
 
-#### parameters
-`apiParameters`, `onVideoCapture`, `onApiResponse` : see table above (§ 3.1 : StandAloneUnisseyView)
-Note that all these parameters can be set after construction with correponding properties.
+For you to use this SDK on macOS, you need to provide an entitlement file specifying that your
+application can interact with the built-in and external cameras, as
+per [the official documentation](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_camera).
 
-#### properties
-
-##### apiParameters
-` var apiParameters: ApiParameters?`
-default value : `nil`
-
-##### onVideoCapture
-` var onVideoCapture: VideoCaptureCB?`
-default value : `nil`
-
-##### onApiResponse
-` var onApiResponse: APIResponseCB?`
-default value : `nil`
-
-##### unisseyViewModel.showStartButton
-`var showStartButton:Bool = true`
-Allows to hide the UnisseyView 'start' button  (`unisseyViewModel.showStartButton = False`). Can be used if you want to trig capture programmatically.
-In this case, you would probably use `unisseyViewModel.cameraModel.cameraState` property and `unisseyViewModel.cameraModel.startCapture` method as well.
-
-##### unisseyViewModel.cameraModel.cameraState
-`var cameraState:CameraState`
-The current camera status. Wether the capture is actually ready to be started. 
-```
-public enum CameraState: Int {
-    case NotReady = 0
-    case Ready = 1
-}
-```
-typically used if you don't rely on the UnisseyView 'start' button (`unisseyViewModel.showStartButton = False`) and want to trig capture programmatically. 
-When the state is `Ready`, `unisseyViewModel.cameraModel.startCapture()`is ready to be called.
-
-
-#### methods
-##### unisseyViewModel.cameraModel.startCapture
-`func startCapture() -> Void`
-This method allows to start the capture. This is typically used if you don't rely on the UnisseyView 'start' button, generally because you have disabled it (`unisseyViewModel.showStartButton = False`) and want to trig capture programmatically.
-
-
-## 3.3 UnisseyView
-This view is used in conjunction with your own instance of `UnisseyViewModel`, for the specific uses cases describes in §3.2 (*'UnisseyViewModel'*).
-
-### constructor
-```swift
-public init(
-        viewModel: UnisseyViewModel,
-        showExplanations: Bool = true,
-        themeColor: Color = Color.uniColor("UniBlue")
-    )
-
-```
-
-#### parameters
-##### viewModel
-The `UnisseyViewModel`instance
-
-##### showExplanations, themeColor
- : see corresponding parameter description in § 3.1 ('*StandAloneUnisseyView*')
-
-
-## 3.4. Customization
-All the resources can be customized and overriden by client application.
-To do that you just have to define a localized string with the same identifier into your application bundle.
-Similarly, you can customize Colors and Images by defining them into your application `Assets.xcassets`
-
-# 4. About
-
-## Versions
-
-| Version | Date       | Description            |
-| ------- | ---------- | ---------------------- |
-
-
-<br />
-
-## Support
-
-`support@unissey.com`
-
-## License / Copyright
-
-This SDK is distributed under Unissey's license agreement
+On iOS, you must provide a value for the
+key [NSCameraUsageDescription](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription/).
+Note that this is the text that will be displayed in the system alert once the user clicks on
+the `Request permission` button, if the camera permission hasn't been granted before the use of the
+SDK. If you fail to provide this information, the application will crash when the use tries to grant
+the camera access.
