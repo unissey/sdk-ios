@@ -440,8 +440,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/unissey/sdk-ios";
 			requirement = {
-				branch = v4.0.0;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

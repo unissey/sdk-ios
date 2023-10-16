@@ -47,26 +47,35 @@ an easy integration on both SwiftUI apps and traditional UIKit apps.
 
 ### 1.1 Requirements
 
-The version of your app must be at least iOS 14.0 and macOS 11.0 in order to use this
-SDK.
+The version of your app must be at least iOS 14.0 and macOS 11.0 in order to use this SDK.
 
 ### 1.2 Installation
 
-If you already have Xcode configured with a GitHub personal access token with the proper permissions, you can skip directly to the third step of the installation.
+If you already have Xcode configured with a GitHub personal access token with the proper
+permissions, you can skip directly to the third step of the installation.
 
 #### 1.2.1 Get a GitHub personal access token
 
-First, you need to generate an access token by following the instructions provided [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) by GitHub. Make sure to include at least the `repo` and `read:packages` permissions.
+First, you need to generate an access token by following the instructions
+provided [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+by GitHub. Make sure to include at least the `repo` and `read:packages` permissions.
 
-Then, to gain access to Unissey's SDK, you need to contact the Unissey team and provide your GitHub account name.
+Then, to gain access to Unissey's SDK, you need to contact the Unissey team and provide your GitHub
+account name.
 
 #### 1.2.2 Add you GitHub account on Xcode
 
-Open Xcode, open the `Settings` window (`CMD + ,`) and go to the second tab `Accounts`. Add a new account by clicking on the `+` button on the bottom left corner, select `GitHub` and add your GitHub account's email and the personal access token you generated previously.
+Open Xcode, open the `Settings` window (`CMD + ,`) and go to the second tab `Accounts`. Add a new
+account by clicking on the `+` button on the bottom left corner, select `GitHub` and add your GitHub
+account's email and the personal access token you generated previously.
 
 #### 1.2.3 Download the framework
 
-Finally, you can download our framework using the Swift Package Manager. To do so, in Xcode, go to File -> Add Packages... and enter the following URL in the search bar: `https://github.com/unissey/sdk-ios`. There Xcode will let you define the dependency rule. You can choose a specific version of your choice or use the latest version available that should be on the `master` branch.
+Finally, you can download our framework using the Swift Package Manager. To do so, in Xcode, go to
+File -> Add Packages... and enter the following URL in the search
+bar: `https://github.com/unissey/sdk-ios`. There Xcode will let you define the dependency rule. You
+can choose a specific version of your choice or use the latest version available that should be on
+the `master` branch.
 
 ## 2. Getting started
 
@@ -93,26 +102,25 @@ Unissey's SDK offers three screens, one of which is optional:
 
 The sample apps are here to provide a basic implementation of this library that you can use as a
 base for your integration inside your own application. Whether you're using SwiftUI
-or a traditional approach with UIKit, you will have to create
-a `UnisseyViewModel` and a `UnisseyScreen` to interact with this SDK. The `UnisseyViewModel` is the
-developer interface with which you can interact in your application's code, it's also the class that
-you can configure to suit your needs. The `UnisseyScreen` on the other hand holds the user interface
-and it's what your user will see and interact with.
+or a traditional approach with UIKit, you will have to create a `UnisseyViewModel` and
+a `UnisseyScreen` to interact with this SDK. The `UnisseyViewModel` is the developer interface with
+which you can interact in your application's code, it's also the class that you can configure to
+suit your needs. The `UnisseyScreen` on the other hand holds the user interface and it's what your
+user will see and interact with.
 
 ### 2.2 UnisseyViewModel
 
-The `UnisseyViewModel` class offers a constructor that should be used to create an
-instance of it. Only an `AcquisitionPreset` object and an `OnRecordEndedListener` are necessary to
-use the SDK. Note that the `OnRecordEndedListener` is optional during the initialization of
-the `UnisseyViewModel` since, most of the time, you're going to want to reference `self` inside your
-callback to handle the result, and there are situations where you will not be able to
-reference `self` when initializing the object. This field is still mandatory for the SDK to hand
-back a response, if you fail to provide an `OnRecordEndedListener`, the user will get stuck at the
-end of the video acquisition.
+The `UnisseyViewModel` class offers a constructor that should be used to create an instance of it.
+Only an `AcquisitionPreset` object and an `OnRecordEndedListener` are necessary to use the SDK. Note
+that the `OnRecordEndedListener` is optional during the initialization of the `UnisseyViewModel`
+since, most of the time, you're going to want to reference `self` inside your callback to handle the
+result, and there are situations where you will not be able to reference `self` when initializing
+the object. This field is still mandatory for the SDK to hand back a response, if you fail to
+provide an `OnRecordEndedListener`, the user will get stuck at the end of the video acquisition.
 
 In addition to those parameters, the SDK can be further customized with an `OnStateChangedListener`
-and
-a `SessionConfig`. All of these parameters are detailed in the [Reference](#3-reference) section.
+and a `SessionConfig`. All of these parameters are detailed in the [Reference](#3-reference)
+section.
 
 See the following code for simple usages where the default values are suitable for your use case:
 
@@ -135,8 +143,7 @@ ViewModel as a parameter.
 
 #### 2.3.1 SwiftUI
 
-In SwiftUI, you can use the `UnisseyScreen` as you would use any other View in your
-application:
+In SwiftUI, you can use the `UnisseyScreen` as you would use any other View in your application:
 
 ```swift
 struct ContentView: View {
@@ -152,7 +159,7 @@ struct ContentView: View {
 
 If your application is built with the older Storyboard and UIKit system, you can rely on
 a [UIHostingController](https://developer.apple.com/documentation/swiftui/uihostingcontroller) to
-host the SwiftUI UnisseyView. If you're not familiar with this class, it's a view controller that
+host the SwiftUI `UnisseyView`. If you're not familiar with this class, it's a view controller that
 encapsulates and manages a SwiftUI hierarchy. You just need to provide a SwiftUI view as
 the `rootView` parameter when initializing your hosting controller:
 
@@ -193,7 +200,8 @@ class UnisseyHostingController: UIHostingController<UnisseyView> {
 }
 ```
 
-You can use this Unissey Hosting Controller as normal in your storyboard:
+You can use this `UIHostingController` as you would use any standard `UIViewController` in your
+storyboard:
 
 ![Storyboard](images/Storyboard.png)
 
@@ -279,17 +287,17 @@ The `VideoQuality` is an enum representing available qualities that the video ca
 | uhd     | 2160p                                              |
 | highest | The highest resolution possible on the user device |
 
-When providing custom qualities to override the preset, you should make sure to provide plausible
-fallback values to support as many devices as possible. If no provided quality is available on the
-user's device, an error will be thrown on the `OnRecordEndedListener` callback.
+⚠️ **NOTE:** When providing custom qualities to override the preset, you should make sure to provide
+plausible fallback values to support as many devices as possible. If no provided quality is
+available on the user's device, an error will be thrown on the `OnRecordEndedListener` callback.
 
 The `UiConfig`:
 
-| Parameter name                        | Type  | Default value | Description                                                                                                                                                          |
-|---------------------------------------|-------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| showInstructions                      | Bool  | true          | Specify whether to show the first instructions screen or not                                                                                                         |
-| showVideoCaptureButton                | Bool  | true          | Specify whether to show the "Start" button on the video capture screen or not                                                                                        |
-| showWideWindowPreviewInputsToTheRight | Bool  | true          | Specify whether the preview inputs should be displayed to the right of the camera preview or to the left in wide window mode (typically on phones in landscape mode) |
+| Parameter name                        | Type  | Default value | Description                                                                                                                                                                                                                                                                                |
+|---------------------------------------|-------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| showInstructions                      | Bool  | true          | Specify whether to show the first instructions screen or not                                                                                                                                                                                                                               |
+| showVideoCaptureButton                | Bool  | true          | Specify whether to show the "Start" button on the video capture screen or not. This is mainly useful if you choose to enable auto-starting of the video capture, as explained in the [Auto-starting the video capture](#45-auto-starting-the-video-capture-when-the-cameras-ready) section |
+| showWideWindowPreviewInputsToTheRight | Bool  | true          | Specify whether the preview inputs should be displayed to the right of the camera preview or to the left in wide window mode (typically on phones in landscape mode)                                                                                                                       |
 
 ### 3.5 UnisseyViewModel's public variables and functions
 
@@ -508,8 +516,8 @@ the [official documentation](https://developer.apple.com/documentation/swiftui/a
 
 This SDK provides an [OnStateChangedListener](#33-onstatechangedlistener) that you can leverage to
 achieve more advanced behavior. One good example of advanced usage would be to use this listener,
-along with the public function `startVideoCapture()`, to auto-start the video capture
-when the camera is ready, so that the user doesn't have to click on the "Start" button.
+along with the public function `startVideoCapture()`, to auto-start the video capture when the
+camera is ready, so that the user doesn't have to click on the "Start" button.
 
 First of all, you're going to hide the "Start" button which doesn't make any sense if we want the
 video to be captured right away. Then, you need to implement an `OnStateChangedListener` and
@@ -553,8 +561,8 @@ Note that doing it in UIKit is pretty much exactly the same as in SwiftUI.
 
 ### 5.1 Add camera requirement to your application
 
-For you to use this SDK on macOS, you need to provide an entitlement file specifying that your
-application can interact with the built-in and external cameras, as
+To use this SDK on macOS, you need to provide an entitlement file specifying that your application
+can interact with the built-in and external cameras, as
 per [the official documentation](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_device_camera).
 
 On iOS, you must provide a value for the
