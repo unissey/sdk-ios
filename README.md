@@ -3,6 +3,8 @@
 <!-- Using HTML notation instead of MD to prevent the TOC generation from picking up this header --> 
 <h1>Unissey iOS/macOS SDK</h1>
 
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/unissey/sdk-ios)](#12-installation)
+
 This iOS/macOS Framework provides an easy way to obtain a video selfie to be used with Unissey's
 SaaS
 solution on an iOS or macOS application. This SDK has been developed with SwiftUI, allowing for
@@ -10,19 +12,19 @@ an easy integration on both SwiftUI apps and traditional UIKit apps.
 
 <!-- @formatter:off -->
 <!-- TOC -->
-  * [1. Installation & requirements](#1-installation--requirements)
+* [1. Installation & requirements](#1-installation-requirements)
     * [1.1 Requirements](#11-requirements)
     * [1.2 Installation](#12-installation)
-      * [1.2.1 Get a GitHub personal access token](#121-get-a-github-personal-access-token)
-      * [1.2.2 Add you GitHub account on Xcode](#122-add-you-github-account-on-xcode)
-      * [1.2.3 Download the framework](#123-download-the-framework)
-  * [2. Getting started](#2-getting-started)
+        * [1.2.1 Get a GitHub personal access token](#121-get-a-github-personal-access-token)
+        * [1.2.2 Add you GitHub account on Xcode](#122-add-you-github-account-on-xcode)
+        * [1.2.3 Download the framework](#123-download-the-framework)
+* [2. Getting started](#2-getting-started)
     * [2.1 Overview](#21-overview)
     * [2.2 UnisseyViewModel](#22-unisseyviewmodel)
     * [2.3 UnisseyScreen](#23-unisseyscreen)
-      * [2.3.1 SwiftUI](#231-swiftui)
-      * [2.3.2 Traditional UIKit app](#232-traditional-uikit-app)
-  * [3. Reference](#3-reference)
+        * [2.3.1 SwiftUI](#231-swiftui)
+        * [2.3.2 Traditional UIKit app](#232-traditional-uikit-app)
+* [3. Reference](#3-reference)
     * [3.1 AcquisitionPreset](#31-acquisitionpreset)
     * [3.2 OnRecordEndedListener](#32-onrecordendedlistener)
     * [3.3 OnStateChangedListener](#33-onstatechangedlistener)
@@ -32,13 +34,13 @@ an easy integration on both SwiftUI apps and traditional UIKit apps.
     * [3.7 Colors](#37-colors)
     * [3.8 Images](#38-images)
     * [3.9 Typography](#39-typography)
-  * [4. Advanced usage](#4-advanced-usage)
+* [4. Advanced usage](#4-advanced-usage)
     * [4.1 Specifying a SessionConfig](#41-specifying-a-sessionconfig)
     * [4.2 Customizing the texts and translations](#42-customizing-the-texts-and-translations)
-    * [4.3 Customizing the assets (colors and images)](#43-customizing-the-assets--colors-and-images-)
+    * [4.3 Customizing the assets (colors and images)](#43-customizing-the-assets-colors-and-images)
     * [4.4 Customizing the types](#44-customizing-the-types)
     * [4.5 Auto-starting the video capture when the camera's ready](#45-auto-starting-the-video-capture-when-the-cameras-ready)
-  * [5. Common issues](#5-common-issues)
+* [5. Common issues](#5-common-issues)
     * [5.1 Add camera requirement to your application](#51-add-camera-requirement-to-your-application)
 <!-- TOC -->
 <!-- @formatter:on -->
