@@ -12,7 +12,7 @@
 		EE22051A2A38A33000285B59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2205192A38A33000285B59 /* ContentView.swift */; };
 		EE22051C2A38A33100285B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE22051B2A38A33100285B59 /* Assets.xcassets */; };
 		EE22051F2A38A33100285B59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE22051E2A38A33100285B59 /* Preview Assets.xcassets */; };
-		EE8B90BF2ABDA1F200EF7453 /* UnisseySdk in Frameworks */ = {isa = PBXBuildFile; productRef = EE8B90BE2ABDA1F200EF7453 /* UnisseySdk */; };
+		EEB25F0A2C40496E001E1177 /* UnisseySdk in Frameworks */ = {isa = PBXBuildFile; productRef = EEB25F092C40496E001E1177 /* UnisseySdk */; };
 		EEC106AC2A4ADA40008F421A /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC106AB2A4ADA40008F421A /* VideoPlayerView.swift */; };
 		EEC437C52A9CF97800F79178 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEC437C72A9CF97800F79178 /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE8B90BF2ABDA1F200EF7453 /* UnisseySdk in Frameworks */,
+				EEB25F0A2C40496E001E1177 /* UnisseySdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 			);
 			name = "sample-swiftui-app";
 			packageProductDependencies = (
-				EE8B90BE2ABDA1F200EF7453 /* UnisseySdk */,
+				EEB25F092C40496E001E1177 /* UnisseySdk */,
 			);
 			productName = sampleswiftuiapp;
 			productReference = EE2205142A38A33000285B59 /* sample-swiftui-app.app */;
@@ -151,7 +151,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					EE2205132A38A33000285B59 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -168,7 +168,7 @@
 			);
 			mainGroup = EE22050B2A38A33000285B59;
 			packageReferences = (
-				EE8B90BD2ABDA1F200EF7453 /* XCRemoteSwiftPackageReference "sdk-ios" */,
+				EEB25F082C40496E001E1177 /* XCRemoteSwiftPackageReference "sdk-ios" */,
 			);
 			productRefGroup = EE2205152A38A33000285B59 /* Products */;
 			projectDirPath = "";
@@ -232,6 +232,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -264,6 +265,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -292,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -324,6 +327,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -436,7 +440,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EE8B90BD2ABDA1F200EF7453 /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
+		EEB25F082C40496E001E1177 /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/unissey/sdk-ios";
 			requirement = {
@@ -447,9 +451,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EE8B90BE2ABDA1F200EF7453 /* UnisseySdk */ = {
+		EEB25F092C40496E001E1177 /* UnisseySdk */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EE8B90BD2ABDA1F200EF7453 /* XCRemoteSwiftPackageReference "sdk-ios" */;
+			package = EEB25F082C40496E001E1177 /* XCRemoteSwiftPackageReference "sdk-ios" */;
 			productName = UnisseySdk;
 		};
 /* End XCSwiftPackageProductDependency section */

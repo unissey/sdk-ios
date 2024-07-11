@@ -12,19 +12,19 @@ an easy integration on both SwiftUI apps and traditional UIKit apps.
 
 <!-- @formatter:off -->
 <!-- TOC -->
-* [1. Installation & requirements](#1-installation-requirements)
+  * [1. Installation & requirements](#1-installation--requirements)
     * [1.1 Requirements](#11-requirements)
     * [1.2 Installation](#12-installation)
-        * [1.2.1 Get a GitHub personal access token](#121-get-a-github-personal-access-token)
-        * [1.2.2 Add you GitHub account on Xcode](#122-add-you-github-account-on-xcode)
-        * [1.2.3 Download the framework](#123-download-the-framework)
-* [2. Getting started](#2-getting-started)
+      * [1.2.1 Get a GitHub personal access token](#121-get-a-github-personal-access-token)
+      * [1.2.2 Add you GitHub account on Xcode](#122-add-you-github-account-on-xcode)
+      * [1.2.3 Download the framework](#123-download-the-framework)
+  * [2. Getting started](#2-getting-started)
     * [2.1 Overview](#21-overview)
     * [2.2 UnisseyViewModel](#22-unisseyviewmodel)
     * [2.3 UnisseyScreen](#23-unisseyscreen)
-        * [2.3.1 SwiftUI](#231-swiftui)
-        * [2.3.2 Traditional UIKit app](#232-traditional-uikit-app)
-* [3. Reference](#3-reference)
+      * [2.3.1 SwiftUI](#231-swiftui)
+      * [2.3.2 Traditional UIKit app](#232-traditional-uikit-app)
+  * [3. Reference](#3-reference)
     * [3.1 AcquisitionPreset](#31-acquisitionpreset)
     * [3.2 OnRecordEndedListener](#32-onrecordendedlistener)
     * [3.3 OnStateChangedListener](#33-onstatechangedlistener)
@@ -34,13 +34,17 @@ an easy integration on both SwiftUI apps and traditional UIKit apps.
     * [3.7 Colors](#37-colors)
     * [3.8 Images](#38-images)
     * [3.9 Typography](#39-typography)
-* [4. Advanced usage](#4-advanced-usage)
+  * [4. Advanced usage](#4-advanced-usage)
     * [4.1 Specifying a SessionConfig](#41-specifying-a-sessionconfig)
     * [4.2 Customizing the texts and translations](#42-customizing-the-texts-and-translations)
     * [4.3 Customizing the assets (colors and images)](#43-customizing-the-assets-colors-and-images)
     * [4.4 Customizing the types](#44-customizing-the-types)
     * [4.5 Auto-starting the video capture when the camera's ready](#45-auto-starting-the-video-capture-when-the-cameras-ready)
-* [5. Common issues](#5-common-issues)
+    * [4.6 Enabling Injection Attack Detection (IAD)](#46-enabling-injection-attack-detection-iad)
+      * [4.6.1 Obtain the IAD data from your Back-End](#461-obtain-the-iad-data-from-your-back-end)
+      * [4.6.2 Create an IadConfig to add to the SessionConfig](#462-create-an-iadconfig-to-add-to-the-sessionconfig)
+      * [4.6.3 Send the metadata along with the video to the /analyze endpoint](#463-send-the-metadata-along-with-the-video-to-the-analyze-endpoint)
+  * [5. Common issues](#5-common-issues)
     * [5.1 Add camera requirement to your application](#51-add-camera-requirement-to-your-application)
 <!-- TOC -->
 <!-- @formatter:on -->
@@ -558,6 +562,49 @@ the `Type '()' cannot conform to 'View'` error in SwiftUI when trying to assign
 an `OnStateChangedListener` on our `UnisseyViewModel`.
 
 Note that doing it in UIKit is pretty much exactly the same as in SwiftUI.
+
+### 4.6 Enabling Injection Attack Detection (IAD)
+
+Unissey’s Injection Attack Detection (IAD) is a solution based on random, entirely passive
+measurements that assure the genuineness and authenticity of the used camera and of the captured
+video flow.
+
+#### 4.6.1 Obtain the IAD data from your Back-End
+
+The first step is retrieving the string data to pass on to the SDK. To do so, call the
+endpoint `/iad/prepare` as described in the API documentation **from your application's Back-End** (
+this is important as you need to specify your API key which should never be made public in your
+client's source code).
+
+#### 4.6.2 Create an IadConfig to add to the SessionConfig
+
+As explained in the [Specifying a SessionConfig](#41-specifying-a-sessionconfig) section, you can
+customize the SDK's behavior by specifying a configuration object. In order to enable Injection
+Attack Detection and secure the acquired video, you need to create a `SessionConfig` object
+containing an `IadConfig` with the data retrieved from the call to `/iad/prepare`:
+
+```swift
+let iadConfig = IadConfig(data: appViewModel.iadResponse)
+let sessionConfig = SessionConfig(iadConfig: iadConfig)
+
+let unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast,
+                                        sessionConfig: sessionConfig) { result in
+    ...
+}
+```
+
+Note that when IAD is enabled, the video takes a bit longer to appear to the user (up to 3.5s) since
+the SDK is performing some computations to ensure the camera and video are genuine and authentic.
+
+#### 4.6.3 Send the metadata along with the video to the /analyze endpoint
+
+Last but not least, when transmitting the video to your application's Back-End, do not forget to
+send the metadata returned by the SDK as well. From your Back-End, you should then send the video
+and the metadata to Unissey's `/analyze` endpoint. This step is mandatory in order for the IAD to
+work since these encrypted metadata now contain information processed on our Back-End to assess the
+video's authenticity.
+
+The result of the call to `/analyze` will then contain information related to the IAD.
 
 ## 5. Common issues
 
