@@ -1,14 +1,15 @@
 {
+  "originHash" : "aa6333507fe37d4de3bdabbf494bbd7123c596cb9ca36bc792703a59e74745e3",
   "pins" : [
     {
       "identity" : "sdk-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/unissey/sdk-ios",
       "state" : {
-        "revision" : "9846194a8d6bd83661f2f22cb770be26cdc0c3b7",
-        "version" : "3.0.0"
+        "revision" : "5b202b4fc51c787b1c4c723521b7e07bdf990a51",
+        "version" : "3.1.0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
