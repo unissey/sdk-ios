@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/unissey/sdk-ios",
       "state" : {
-        "revision" : "5b202b4fc51c787b1c4c723521b7e07bdf990a51",
-        "version" : "3.1.0"
+        "revision" : "35c730e68d22f365ec8a1a3aade63113991b5a7e",
+        "version" : "3.1.2"
       }
     }
   ],
