@@ -474,6 +474,8 @@ This SDK exposes some colors and images in its `Assets.xcassets` directory. They
 overridden by just providing your own colors and images using the same keys as the ones defined in
 the Framework and detailed in the [Colors](#37-colors) and [Images](#38-images) sections.
 
+![Assets](images/Assets.png)
+
 The colors can also be customized at runtime if needed. To override a color dynamically, you just
 need to set a new value to the corresponding variable anywhere in your application before you create
 the UnisseyScreen.
@@ -510,8 +512,6 @@ func customizeUnisseyColors() {
 ```
 
 ⚠️ **NOTE:** Do not forget to import `UnisseySdk` to gain access to the colors variables.
-
-![Assets](images/Assets.png)
 
 ### 4.4 Customizing the types
 
