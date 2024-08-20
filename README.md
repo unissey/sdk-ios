@@ -219,10 +219,10 @@ The present SDK provides presets defining how the video is recorded. Even if you
 its values, you must select a preset when creating an instance of `UnisseyViewModel`.
 Here are the 2 current possible values of `AcquisitionPreset`:
 
-| Preset name       | Recording duration | Video quality                         | Description                                                                                                                        |
-|-------------------|--------------------|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| selfieFast        | 1 second           | 480p resolution if possible, or 720p  | The preset that most use cases rely on. It provides the minimal configuration needed for Unissey's AI models to work at their best |
-| selfieSubstantial | 3 seconds          | 720p resolution if possible, or 1080p | The preset fit for use cases aiming for a PVID substantial compliance                                                              |
+| Preset name       | Recording duration | Video quality                          | Description                                                                                                                        |
+|-------------------|--------------------|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| selfieFast        | 1 second           | 720p resolution if possible, or 1080p  | The preset that most use cases rely on. It provides the minimal configuration needed for Unissey's AI models to work at their best |
+| selfieSubstantial | 3 seconds          | 720p resolution if possible, or 1080p  | The preset fit for use cases aiming for a PVID substantial compliance                                                              |
 
 ### 3.2 OnRecordEndedListener
 
@@ -348,23 +348,24 @@ know how to override them):
 ### 3.7 Colors
 
 This SDK offers a few Color assets to theme its UI elements that can be overridden (see
-[Customizing the assets (colors and images)](#43-customizing-the-assets--colors-and-images-) section
+[Customizing the assets (colors and images)](#43-customizing-the-assets-colors-and-images) section
 to know how to override them).
 
 Here's the exhaustive list of colors used in the SDK along with their default values corresponding
 to the Unissey color theme:
 
-| Key                                        | Default light mode value | Default dark mode value |
-|--------------------------------------------|--------------------------|-------------------------|
-| UnisseyCardBackground                      | `#F6F6F6`                | `#48454F`               |
-| UnisseyOverlayBackground                   | `#FFFFFF` - 80% opacity  | `#000000` - 80% opacity |
-| UnisseyPrimary                             | `#09165C`                | `#3C58E8`               |
-| UnisseySecondary                           | `#3C58E8`                | `#3C58E8`               |
+| Asset Catalogue Name     | Variable name            | Default light mode value | Default dark mode value |
+|--------------------------|--------------------------|--------------------------|-------------------------|
+| UnisseyPrimary           | unisseyPrimary           | `#09165C`                | `#3C58E8`               |
+| UnisseySecondary         | unisseySecondary         | `#3C58E8`                | `#3C58E8`               |
+| UnisseyCardBackground    | unisseyCardBackground    | `#F6F6F6`                | `#48454F`               |
+| UnisseyOverlayBackground | unisseyOverlayBackground | `#FFFFFF` - 80% opacity  | `#000000` - 80% opacity |
+| UnisseyLoader            | unisseyLoader            | `#000000`                | `#FFFFFF`               |
 
 ### 3.8 Images
 
 This SDK contains three customizable images (see
-[Customizing the assets (colors and images)](#43-customizing-the-assets--colors-and-images-) section
+[Customizing the assets (colors and images)](#43-customizing-the-assets-colors-and-images) section
 to know how to override them). Those images illustrate the three instructions on the first optional
 screen.
 
@@ -472,6 +473,43 @@ And here's the view from Xcode:
 This SDK exposes some colors and images in its `Assets.xcassets` directory. They can be freely
 overridden by just providing your own colors and images using the same keys as the ones defined in
 the Framework and detailed in the [Colors](#37-colors) and [Images](#38-images) sections.
+
+The colors can also be customized at runtime if needed. To override a color dynamically, you just
+need to set a new value to the corresponding variable anywhere in your application before you create
+the UnisseyScreen.
+
+**Example:** Let's say you want to change the Primary and Secondary color, and the Secondary color
+should change according to the user's interface style. You just need to write this function and call
+it somewhere before `UnisseyScreen` is instantiated, it could be in your app's initializer for
+example:
+
+```swift
+import SwiftUI
+import UnisseySdk
+
+@main
+struct MyAwesomeSwiftUiApp: App {
+    init() {
+        customizeUnisseyColors()
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+func customizeUnisseyColors() {
+    unisseyPrimary = Color.orange
+    // Set a dynamic color depending on the user's interface style (light or dark)
+    unisseySecondary = Color(UIColor { traitCollection in
+        return traitCollection.userInterfaceStyle == .light ? UIColor.green : UIColor.red
+    })
+}
+```
+
+⚠️ **NOTE:** Do not forget to import `UnisseySdk` to gain access to the colors variables.
 
 ![Assets](images/Assets.png)
 
