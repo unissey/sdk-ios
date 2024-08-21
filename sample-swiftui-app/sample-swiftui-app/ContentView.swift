@@ -4,12 +4,7 @@ import UnisseySdk
 struct ContentView: View {
     @State var videoUri: URL?
     
-    @ObservedObject var unisseyViewModel: UnisseyViewModel
-    
-    init() {
-        let sessionConfig = SessionConfig(uiConfig: UiConfig())
-        unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast, sessionConfig: sessionConfig)
-    }
+    @ObservedObject var unisseyViewModel = UnisseyViewModel(acquisitionPreset: .selfieFast)
 
     var body: some View {
         NavigationView {
@@ -42,7 +37,7 @@ struct ContentView: View {
                         }
                     }
                 NavigationLink(destination: VideoPlayerView(videoUri: videoUri,
-                                                            onRestartButtonClicked: {
+                                                            onRestartButtonClick: {
                     unisseyViewModel.navigateUp()
                     videoUri = nil
                 }), isActive: .constant(videoUri != nil)) { EmptyView() }
@@ -52,8 +47,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

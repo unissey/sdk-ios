@@ -3,7 +3,7 @@ import SwiftUI
 
 public struct VideoPlayerView: View {
     var videoUri: URL?
-    var onRestartButtonClicked: () -> Void
+    var onRestartButtonClick: () -> Void
     
     public var body: some View {
         VStack {
@@ -12,7 +12,7 @@ public struct VideoPlayerView: View {
                     .frame(maxHeight: 600)
             }
             Spacer()
-            Button(action: onRestartButtonClicked) {
+            Button(action: onRestartButtonClick) {
                 Text("restart")
             }
             Spacer()
@@ -20,8 +20,6 @@ public struct VideoPlayerView: View {
     }
 }
 
-struct VideoPlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        VideoPlayerView(videoUri: URL(fileURLWithPath: ""), onRestartButtonClicked: {})
-    }
+#Preview {
+    VideoPlayerView(videoUri: URL(fileURLWithPath: ""), onRestartButtonClick: {})
 }

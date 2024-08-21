@@ -63,7 +63,7 @@ class UnisseyHostingController: UIHostingController<UnisseyView> {
         // Pass the selected object to the new view controller.
         if let playerViewController = segue.destination as? VideoPlayerViewController {
             playerViewController.videoUri = videoUri!
-            playerViewController.onRestartButtonClicked = {
+            playerViewController.onRestartButtonClick = {
                 self.unisseyViewModel.navigateUp()
                 self.videoUri = nil
                 self.navigationController?.popViewController(animated: true)

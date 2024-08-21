@@ -5,7 +5,7 @@ import UIKit
 class VideoPlayerViewController: UIViewController {
     
     var videoUri: URL!
-    var onRestartButtonClicked: (() -> Void)!
+    var onRestartButtonClick: (() -> Void)!
     var player: AVPlayer?
     
     @IBOutlet weak var videoView: UIView!
@@ -28,7 +28,7 @@ class VideoPlayerViewController: UIViewController {
         
         // Set up the `Restart` button
         restartButton.addAction(UIAction(title: "restart", handler: { _ in
-            self.onRestartButtonClicked()
+            self.onRestartButtonClick()
         }), for: .touchUpInside)
     }
 
