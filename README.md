@@ -272,8 +272,9 @@ Here's what a `SessionConfig` is composed of:
 
 | Parameter name  | Type            | Description                                                     |
 |-----------------|-----------------|-----------------------------------------------------------------|
-| recordingConfig | RecordingConfig | A nested configuration object meant for technical configuration |
-| uiConfig        | UiConfig        | A nested configuration object meant for graphic configuration   |
+| recordingConfig | RecordingConfig | Responsible for additional video settings                       |
+| uiConfig        | UiConfig        | Responsible for graphic configuration                           |
+| iadConfig       | IadConfig       | Responsible for activating the IAD (Injection Attack Detection) |
 
 The `RecordingConfig`:
 
@@ -305,6 +306,20 @@ The `UiConfig`:
 | showVideoCaptureButton                | Bool   | true                               | Specify whether to show the "Start" button on the video capture screen or not. This is mainly useful if you choose to enable auto-starting of the video capture, as explained in the [Auto-starting the video capture](#45-auto-starting-the-video-capture-when-the-cameras-ready) section |
 | showWideWindowPreviewInputsToTheRight | Bool   | true                               | Specify whether the preview inputs should be displayed to the right of the camera preview or to the left in wide window mode (typically on phones in landscape mode)                                                                                                                       |
 | buttonCornerRadius                    | Float? | nil (which leads to a radius of 7) | Set the corner radius of the buttons present in the SDK's interfaces                                                                                                                                                                                                                       |
+
+The `IadConfig`:
+
+| Parameter name | Type    | Default value | Description                                                                  |
+|----------------|---------|---------------|------------------------------------------------------------------------------|
+| data           | String? | null          | The encrypted string received from a call to `/iad/prepare` on Unissey's API |
+
+For a good use of the IAD, you need to call a specific endpoint on our API to retrieve the necessary
+data. Here is a quick overview of the IAD flow:
+
+First, call this endpoint `/iad/prepare` to get your encrypted string in
+our [API](https://api-analyze.unissey.com/api/V3/dev/doc).
+Then, use the video and metadata provided by the SDK to call the `/analyze` endpoint with the video
+corresponding to the `selfie` parameter and the metadata to the `selfieMetadata` parameter.
 
 ### 3.5 UnisseyViewModel's public variables and functions
 
