@@ -15,9 +15,8 @@ an easy integration on both SwiftUI apps and traditional UIKit apps.
   * [1. Installation & requirements](#1-installation--requirements)
     * [1.1 Requirements](#11-requirements)
     * [1.2 Installation](#12-installation)
-      * [1.2.1 Get a GitHub personal access token](#121-get-a-github-personal-access-token)
-      * [1.2.2 Add you GitHub account on Xcode](#122-add-you-github-account-on-xcode)
-      * [1.2.3 Download the framework](#123-download-the-framework)
+      * [1.2.1 Swift Package Manager](#121-swift-package-manager)
+      * [1.2.2 CocoaPods](#122-cocoapods)
   * [2. Getting started](#2-getting-started)
     * [2.1 Overview](#21-overview)
     * [2.2 UnisseyViewModel](#22-unisseyviewmodel)
@@ -57,31 +56,35 @@ The version of your app must be at least iOS 14.0 and macOS 11.0 in order to use
 
 ### 1.2 Installation
 
-If you already have Xcode configured with a GitHub personal access token with the proper
-permissions, you can skip directly to the third step of the installation.
+#### 1.2.1 Swift Package Manager
 
-#### 1.2.1 Get a GitHub personal access token
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the
+distribution of Swift code and is integrated into the `swift` compiler.
 
-First, you need to generate an access token by following the instructions
-provided [here](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
-by GitHub. Make sure to include at least the `repo` and `read:packages` permissions.
+Once you have your Swift package set up, adding Alamofire as a dependency is as easy as adding it to
+the `dependencies` value of your `Package.swift` or the Package list in Xcode.
 
-Then, to gain access to Unissey's SDK, you need to contact the Unissey team and provide your GitHub
-account name.
+```swift
+dependencies: [
+    .package(url: "https://github.com/unissey/sdk-ios.git", .upToNextMajor(from: "3.2.0"))
+]
+```
 
-#### 1.2.2 Add you GitHub account on Xcode
+After that, you can depend on the `UnisseySdk` target:
 
-Open Xcode, open the `Settings` window (`CMD + ,`) and go to the second tab `Accounts`. Add a new
-account by clicking on the `+` button on the bottom left corner, select `GitHub` and add your GitHub
-account's email and the personal access token you generated previously.
+```swift
+.product(name: "UnisseySdk", package: "UnisseySdk")
+```
 
-#### 1.2.3 Download the framework
+#### 1.2.2 CocoaPods
 
-Finally, you can download our framework using the Swift Package Manager. To do so, in Xcode, go to
-File -> Add Packages... and enter the following URL in the search
-bar: `https://github.com/unissey/sdk-ios`. There Xcode will let you define the dependency rule. You
-can choose a specific version of your choice or use the latest version available that should be on
-the `master` branch.
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and
+installation instructions, visit their website. To integrate UnisseySdk into your Xcode project
+using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+pod 'UnisseySdk'
+```
 
 ## 2. Getting started
 
@@ -313,13 +316,8 @@ The `IadConfig`:
 |----------------|---------|---------------|------------------------------------------------------------------------------|
 | data           | String? | null          | The encrypted string received from a call to `/iad/prepare` on Unissey's API |
 
-For a good use of the IAD, you need to call a specific endpoint on our API to retrieve the necessary
-data. Here is a quick overview of the IAD flow:
-
-First, call this endpoint `/iad/prepare` to get your encrypted string in
-our [API](https://api-analyze.unissey.com/api/V3/dev/doc).
-Then, use the video and metadata provided by the SDK to call the `/analyze` endpoint with the video
-corresponding to the `selfie` parameter and the metadata to the `selfieMetadata` parameter.
+See the [Enabling Injection Attack Detection (IAD)](#46-enabling-injection-attack-detection-iad)
+section to know how to enable this feature.
 
 ### 3.5 UnisseyViewModel's public variables and functions
 
