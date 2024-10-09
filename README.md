@@ -4,6 +4,8 @@
 <h1>Unissey iOS/macOS SDK</h1>
 
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/unissey/sdk-ios)](#12-installation)
+&nbsp;
+![Cocoapods Version](https://img.shields.io/cocoapods/v/UnisseySdk)
 
 This iOS/macOS Framework provides an easy way to obtain a video selfie to be used with Unissey's
 SaaS
