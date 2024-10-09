@@ -3,7 +3,8 @@
 <!-- Using HTML notation instead of MD to prevent the TOC generation from picking up this header --> 
 <h1>Unissey iOS/macOS SDK</h1>
 
-[![GitHub release (with filter)](https://img.shields.io/github/v/release/unissey/sdk-ios)](#12-installation)
+[![GitHub Release](https://img.shields.io/github/v/release/unissey/sdk-ios?label=SPM)
+](#12-installation)
 &nbsp;
 ![Cocoapods Version](https://img.shields.io/cocoapods/v/UnisseySdk)
 
