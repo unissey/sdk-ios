@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "UnisseySdk",
-            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySdk-v3.2.0.xcframework.zip",
-            checksum: "c8fd49e170ab25304f61b55c860eb9027d36b012dd87b540c87dc3651d885466"
+            url: "https://storage.googleapis.com/unissey-shared/sdk-ios/UnisseySdk-v3.3.0.xcframework.zip",
+            checksum: "536b6218f8a80ee8b117f02fde11fb469e95d68de2466d95cb533eeadeaa46fe"
         ),
     ]
 )
