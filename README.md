@@ -69,7 +69,7 @@ the `dependencies` value of your `Package.swift` or the Package list in Xcode.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/unissey/sdk-ios.git", .upToNextMajor(from: "3.2.0"))
+    .package(url: "https://github.com/unissey/sdk-ios.git", .upToNextMajor(from: "3.4.0"))
 ]
 ```
 
@@ -372,13 +372,19 @@ to know how to override them).
 Here's the exhaustive list of colors used in the SDK along with their default values corresponding
 to the Unissey color theme:
 
-| Asset Catalogue Name     | Variable name            | Default light mode value | Default dark mode value |
-|--------------------------|--------------------------|--------------------------|-------------------------|
-| UnisseyPrimary           | unisseyPrimary           | `#09165C`                | `#3C58E8`               |
-| UnisseySecondary         | unisseySecondary         | `#3C58E8`                | `#3C58E8`               |
-| UnisseyCardBackground    | unisseyCardBackground    | `#F6F6F6`                | `#48454F`               |
-| UnisseyOverlayBackground | unisseyOverlayBackground | `#FFFFFF` - 80% opacity  | `#000000` - 80% opacity |
-| UnisseyLoader            | unisseyLoader            | `#000000`                | `#FFFFFF`               |
+| Asset Catalogue Name      | Variable name             | Default light mode value                 | Default dark mode value                  | Usage                                                                                                                       |
+|---------------------------|---------------------------|------------------------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| UnisseyPrimary            | unisseyPrimary            | `#09165C`                                | `#3C58E8`                                | Buttons' background                                                                                                         |
+| UnisseyOnPrimary          | unisseyOnPrimary          | `#FFFFFF`                                | `#FFFFFF`                                | Text on buttons                                                                                                             |
+| UnisseySecondary          | unisseySecondary          | `#3C58E8`                                | `#3C58E8`                                | Progress bar tint during recording, icon tint on the camera permission screen                                               |
+| UnisseyLoadingProgressBar | unisseyLoadingProgressBar | iOS' `labelColor` (`#000000`)            | iOS' `labelColor` (`#FFFFFF`)            | Loading circular progress bar track                                                                                         |
+| UnisseyBackground         | unisseyBackground         | iOS' `systemBackgroundColor` (`#FFFFFF`) | iOS' `systemBackgroundColor` (`#000000`) | Views' background                                                                                                           |
+| UnisseyOnBackground       | unisseyOnBackground       | iOS' `labelColor` (`#000000`)            | iOS' `labelColor` (`#FFFFFF`)            | Text directly on the background, including the title on the recording screen                                                |
+| UnisseySurface            | unisseySurface            | `#F6F6F6`                                | `#49454F`                                | Position indicator card's background                                                                                        |
+| UnisseyOnSurface          | unisseyOnSurface          | `#49454F`                                | `#CAC4D0`                                | Text inside the position indicator card                                                                                     |
+| UnisseySurfaceVariant     | unisseySurfaceVariant     | `#F6F6F6`                                | `#49454F`                                | Instructions cards' background                                                                                              |
+| UnisseyOnSurfaceVariant   | unisseyOnSurfaceVariant   | `#49454F`                                | `#CAC4D0`                                | Text inside the instructions cards                                                                                          |
+| UnisseyOverlayBackground  | unisseyOverlayBackground  | `#FFFFFF` - 80% opacity                  | `#000000` - 80% opacity                  | Overlay background. It's advised not to change it, especially with something colorful, as it could impact the PAD's results |
 
 ### 3.8 Images
 
