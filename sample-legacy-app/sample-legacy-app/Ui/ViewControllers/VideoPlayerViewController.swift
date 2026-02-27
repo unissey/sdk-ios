@@ -27,6 +27,7 @@ class VideoPlayerViewController: UIViewController {
         player?.play()
         
         // Set up the `Restart` button
+        restartButton.setTitle(NSLocalizedString("restart_button_title", comment: ""), for: .normal)
         restartButton.addAction(UIAction(title: "restart", handler: { _ in
             self.onRestartButtonClick()
         }), for: .touchUpInside)

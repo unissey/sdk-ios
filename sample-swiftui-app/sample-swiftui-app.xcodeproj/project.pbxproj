@@ -12,23 +12,30 @@
 		EE22051A2A38A33000285B59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2205192A38A33000285B59 /* ContentView.swift */; };
 		EE22051C2A38A33100285B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE22051B2A38A33100285B59 /* Assets.xcassets */; };
 		EE22051F2A38A33100285B59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE22051E2A38A33100285B59 /* Preview Assets.xcassets */; };
-		EEB25F0A2C40496E001E1177 /* UnisseySdk in Frameworks */ = {isa = PBXBuildFile; productRef = EEB25F092C40496E001E1177 /* UnisseySdk */; };
+		EE2205292A38A33100285B59 /* sample_swiftui_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2205282A38A33100285B59 /* sample_swiftui_appTests.swift */; };
+		EE2205332A38A33100285B59 /* sample_swiftui_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2205322A38A33100285B59 /* sample_swiftui_appUITests.swift */; };
+		EE2205352A38A33100285B59 /* sample_swiftui_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2205342A38A33100285B59 /* sample_swiftui_appUITestsLaunchTests.swift */; };
+		EE81D1282F51D889009E32AC /* UnisseySdk in Frameworks */ = {isa = PBXBuildFile; productRef = EE81D1272F51D889009E32AC /* UnisseySdk */; };
 		EEC106AC2A4ADA40008F421A /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC106AB2A4ADA40008F421A /* VideoPlayerView.swift */; };
 		EEC437C52A9CF97800F79178 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEC437C72A9CF97800F79178 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		EE7034ED2A3B193100D292D3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+/* Begin PBXContainerItemProxy section */
+		EE2205252A38A33100285B59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE22050C2A38A33000285B59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE2205132A38A33000285B59;
+			remoteInfo = sampleswiftuiapp;
 		};
-/* End PBXCopyFilesBuildPhase section */
+		EE22052F2A38A33100285B59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE22050C2A38A33000285B59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE2205132A38A33000285B59;
+			remoteInfo = sampleswiftuiapp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EE15C8CD2A3CBAAB007B849A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -38,18 +45,39 @@
 		EE2205192A38A33000285B59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EE22051B2A38A33100285B59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE22051E2A38A33100285B59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EE2205242A38A33100285B59 /* sample-swiftui-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sample-swiftui-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE2205282A38A33100285B59 /* sample_swiftui_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample_swiftui_appTests.swift; sourceTree = "<group>"; };
+		EE22052E2A38A33100285B59 /* sample-swiftui-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sample-swiftui-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE2205322A38A33100285B59 /* sample_swiftui_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample_swiftui_appUITests.swift; sourceTree = "<group>"; };
+		EE2205342A38A33100285B59 /* sample_swiftui_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sample_swiftui_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EE4E374E2A863086006B2D5F /* sample-swiftui-app.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "sample-swiftui-app.entitlements"; sourceTree = "<group>"; };
+		EEB0586A2A3A0B360017E72C /* UnisseySdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnisseySdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEC106AB2A4ADA40008F421A /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		EEC437C62A9CF97800F79178 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EEC437C82A9CF97B00F79178 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EEC503DB2F33761500EA5D7E /* UnisseyHeadlessSdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UnisseyHeadlessSdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EE2205212A38A33100285B59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE22052B2A38A33100285B59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEB058672A3A0AE60017E72C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEB25F0A2C40496E001E1177 /* UnisseySdk in Frameworks */,
+				EE81D1282F51D889009E32AC /* UnisseySdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				EE2205162A38A33000285B59 /* sample-swiftui-app */,
+				EE2205272A38A33100285B59 /* sample-swiftui-appTests */,
+				EE2205312A38A33100285B59 /* sample-swiftui-appUITests */,
 				EE2205152A38A33000285B59 /* Products */,
 				EEB058642A3A09F00017E72C /* Frameworks */,
 			);
@@ -69,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				EE2205142A38A33000285B59 /* sample-swiftui-app.app */,
+				EE2205242A38A33100285B59 /* sample-swiftui-appTests.xctest */,
+				EE22052E2A38A33100285B59 /* sample-swiftui-appUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,9 +128,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EE2205272A38A33100285B59 /* sample-swiftui-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE2205282A38A33100285B59 /* sample_swiftui_appTests.swift */,
+			);
+			path = "sample-swiftui-appTests";
+			sourceTree = "<group>";
+		};
+		EE2205312A38A33100285B59 /* sample-swiftui-appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE2205322A38A33100285B59 /* sample_swiftui_appUITests.swift */,
+				EE2205342A38A33100285B59 /* sample_swiftui_appUITestsLaunchTests.swift */,
+			);
+			path = "sample-swiftui-appUITests";
+			sourceTree = "<group>";
+		};
 		EEB058642A3A09F00017E72C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEC503DB2F33761500EA5D7E /* UnisseyHeadlessSdk.framework */,
+				EEB0586A2A3A0B360017E72C /* UnisseySdk.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,19 +180,51 @@
 				EE2205102A38A33000285B59 /* Sources */,
 				EE2205122A38A33000285B59 /* Resources */,
 				EEB058672A3A0AE60017E72C /* Frameworks */,
-				EE7034ED2A3B193100D292D3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "sample-swiftui-app";
-			packageProductDependencies = (
-				EEB25F092C40496E001E1177 /* UnisseySdk */,
-			);
 			productName = sampleswiftuiapp;
 			productReference = EE2205142A38A33000285B59 /* sample-swiftui-app.app */;
 			productType = "com.apple.product-type.application";
+		};
+		EE2205232A38A33100285B59 /* sample-swiftui-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE22053B2A38A33100285B59 /* Build configuration list for PBXNativeTarget "sample-swiftui-appTests" */;
+			buildPhases = (
+				EE2205202A38A33100285B59 /* Sources */,
+				EE2205212A38A33100285B59 /* Frameworks */,
+				EE2205222A38A33100285B59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE2205262A38A33100285B59 /* PBXTargetDependency */,
+			);
+			name = "sample-swiftui-appTests";
+			productName = sampleswiftuiappTests;
+			productReference = EE2205242A38A33100285B59 /* sample-swiftui-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EE22052D2A38A33100285B59 /* sample-swiftui-appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE22053E2A38A33100285B59 /* Build configuration list for PBXNativeTarget "sample-swiftui-appUITests" */;
+			buildPhases = (
+				EE22052A2A38A33100285B59 /* Sources */,
+				EE22052B2A38A33100285B59 /* Frameworks */,
+				EE22052C2A38A33100285B59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE2205302A38A33100285B59 /* PBXTargetDependency */,
+			);
+			name = "sample-swiftui-appUITests";
+			productName = sampleswiftuiappUITests;
+			productReference = EE22052E2A38A33100285B59 /* sample-swiftui-appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -151,10 +234,18 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					EE2205132A38A33000285B59 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					EE2205232A38A33100285B59 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = EE2205132A38A33000285B59;
+					};
+					EE22052D2A38A33100285B59 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = EE2205132A38A33000285B59;
 					};
 				};
 			};
@@ -168,13 +259,15 @@
 			);
 			mainGroup = EE22050B2A38A33000285B59;
 			packageReferences = (
-				EEB25F082C40496E001E1177 /* XCRemoteSwiftPackageReference "sdk-ios" */,
+				EE81D1262F51D889009E32AC /* XCRemoteSwiftPackageReference "sdk-ios" */,
 			);
 			productRefGroup = EE2205152A38A33000285B59 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				EE2205132A38A33000285B59 /* sample-swiftui-app */,
+				EE2205232A38A33100285B59 /* sample-swiftui-appTests */,
+				EE22052D2A38A33100285B59 /* sample-swiftui-appUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -191,6 +284,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE2205222A38A33100285B59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE22052C2A38A33100285B59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -204,7 +311,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE2205202A38A33100285B59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE2205292A38A33100285B59 /* sample_swiftui_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE22052A2A38A33100285B59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE2205352A38A33100285B59 /* sample_swiftui_appUITestsLaunchTests.swift in Sources */,
+				EE2205332A38A33100285B59 /* sample_swiftui_appUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE2205262A38A33100285B59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE2205132A38A33000285B59 /* sample-swiftui-app */;
+			targetProxy = EE2205252A38A33100285B59 /* PBXContainerItemProxy */;
+		};
+		EE2205302A38A33100285B59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE2205132A38A33000285B59 /* sample-swiftui-app */;
+			targetProxy = EE22052F2A38A33100285B59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EE15C8CE2A3CBAAB007B849A /* InfoPlist.strings */ = {
@@ -232,7 +369,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -265,7 +401,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -294,7 +429,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -327,7 +461,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -364,7 +497,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,7 +532,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,6 +546,82 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EE22053C2A38A33100285B59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6UQZ5F4979;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unissey.sample-swiftui-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sample-swiftui-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sample-swiftui-app";
+			};
+			name = Debug;
+		};
+		EE22053D2A38A33100285B59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6UQZ5F4979;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unissey.sample-swiftui-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sample-swiftui-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/sample-swiftui-app";
+			};
+			name = Release;
+		};
+		EE22053F2A38A33100285B59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6UQZ5F4979;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unissey.sample-swiftui-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "sample-swiftui-app";
+			};
+			name = Debug;
+		};
+		EE2205402A38A33100285B59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6UQZ5F4979;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.unissey.sample-swiftui-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "sample-swiftui-app";
 			};
 			name = Release;
 		};
@@ -437,23 +646,41 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		EE22053B2A38A33100285B59 /* Build configuration list for PBXNativeTarget "sample-swiftui-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE22053C2A38A33100285B59 /* Debug */,
+				EE22053D2A38A33100285B59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE22053E2A38A33100285B59 /* Build configuration list for PBXNativeTarget "sample-swiftui-appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE22053F2A38A33100285B59 /* Debug */,
+				EE2205402A38A33100285B59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EEB25F082C40496E001E1177 /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
+		EE81D1262F51D889009E32AC /* XCRemoteSwiftPackageReference "sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/unissey/sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EEB25F092C40496E001E1177 /* UnisseySdk */ = {
+		EE81D1272F51D889009E32AC /* UnisseySdk */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EEB25F082C40496E001E1177 /* XCRemoteSwiftPackageReference "sdk-ios" */;
+			package = EE81D1262F51D889009E32AC /* XCRemoteSwiftPackageReference "sdk-ios" */;
 			productName = UnisseySdk;
 		};
 /* End XCSwiftPackageProductDependency section */

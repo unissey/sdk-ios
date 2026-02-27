@@ -1,1 +1,4 @@
-"back" = "Back";
+"ui_demo_button_title" = "Demo with UI SDK";
+"headless_demo_button_title" = "Demo with Headless SDK";
+"start_button_title" = "Start";
+"restart_button_title" = "Restart";

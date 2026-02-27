@@ -1,1 +1,4 @@
-"back" = "Retour";
+"ui_demo_button_title" = "Démo avec SDK UI";
+"headless_demo_button_title" = "Démo avec SDK headless";
+"start_button_title" = "Commencer";
+"restart_button_title" = "Recommencer";

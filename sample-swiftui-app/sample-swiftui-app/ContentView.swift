@@ -26,13 +26,12 @@ struct ContentView: View {
                     }
                     .onAppear {
                         videoUri = nil
-                        unisseyViewModel.onRecordEndedListener = { result in
-                            do {
-                                let response = try result.get()
+                    }
+                    .task {
+                        for await event in unisseyViewModel.cameraEvents.values {
+                            if case .videoRecordEnded(let response) = event {
                                 print("Video record ended with file path: '\(response.videoFilePath)'")
                                 videoUri = response.videoFilePath
-                            } catch {
-                                print("An error occurred while recording the video: \(error)")
                             }
                         }
                     }
